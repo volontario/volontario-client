@@ -16,9 +16,9 @@ angular.module('starter')
         },
         {
           id:1,
-          icon:'ion-fork',
-          name:'restaurant',
-          title:'Restaurant'
+          icon:'ion-person-stalker',
+          name:'voluntaryWork',
+          title:'voluntaryWork'
         },
         {
           id:2,
@@ -28,9 +28,9 @@ angular.module('starter')
         },
         {
           id:3,
-          icon:'ion-coffee',
-          name:'cafe',
-          title:"Coffeehouse"
+          icon:'ion-heart',
+          name:'bloodServiceCentre',
+          title:"bloodServiceCentre"
         },
         {
           id:4,
