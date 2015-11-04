@@ -1,8 +1,8 @@
 angular.module('starter.controllers', [])
 // URL to API that enables cross-origin requests to anywhere
  .value('CORSURL', '//cors-anywhere.herokuapp.com/')
- .value('APIURL', 'http://tittle.eu-gb.mybluemix.net/locations')
- .value('UPDATE_INTERVAL', '10000')
+ .value('APIURL', 'https://volontario.herokuapp.com/locations')
+ .value('UPDATE_INTERVAL', '100000')
 
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
@@ -108,7 +108,7 @@ angular.module('starter.controllers', [])
         $http({
           method: 'GET',
           headers : {"content-type" : "application/json"},
-          params: {limit:30, category: selectedTags.join(',')},
+          params: {category: selectedTags.join(',')},
           url: CORSURL+APIURL
             }).then(function successCallback(response) {
             // this callback will be called asynchronously
@@ -137,11 +137,11 @@ angular.module('starter.controllers', [])
 
             for(var i=0;i < res.length; i++){
                   markers.push(res[i]);
-                  content = res[i].title +'<br>';
+                  content = '<br>';
                   tag = Categories.getIcon(res[i].category);
                   var title = res[i].title;
                   // this is still random
-                  traffic = Math.round(res[i].traffic.average*100) || 0;
+                  traffic = 1;//Math.round(res[i].traffic.average*100) || 0;
                   // define activity class
                   var light = 'darkest';
                   if(traffic<25){
@@ -157,15 +157,15 @@ angular.module('starter.controllers', [])
                   // define label class
                   var className = "labels "+light;
                   // sale class, should come from markers[i].sale or something
-                  if(res[i].discounts[0]){
+                  /*if(res[i].discounts[0]){
                     content = res[i].title +'<br><span class="discount">'+ (res[i].discounts[0].description||'')+'</span>';
                     className += ' has-sale';
-                  }
+                  }*/
 
                   // Get center
                   var coords = new google.maps.LatLng(
-                    res[i].latitude,
-                    res[i].longitude
+                    res[i].coordinates.latitude,
+                    res[i].coordinates.longitude
                     );        
                     // Set marker also
                     marker = new MarkerWithLabel({
@@ -198,7 +198,7 @@ angular.module('starter.controllers', [])
         $http({
           method: 'GET',
           headers : {"content-type" : "application/json"},
-          params: {limit:30, category: selectedTags.join(',')},
+          params: {category: selectedTags.join(',')},
           url: CORSURL+APIURL}).then(function successCallback(response) {
             var res = response.data;
             for(var i=0;i < res.length; i++){
