@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 // URL to API that enables cross-origin requests to anywhere
  .value('CORSURL', '//cors-anywhere.herokuapp.com/')
- .value('APIURL', 'https://volontario.herokuapp.com/locations')
+ .value('APIURL', 'https://volontario.herokuapp.com/')
  .value('UPDATE_INTERVAL', '100000')
 
 
@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
  
 })
 
-.controller('MapCtrl', function($scope, $ionicLoading, $compile, $http, $timeout, $interval,CORSURL, APIURL, Categories,MapSettings,UPDATE_INTERVAL) {
+.controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval,CORSURL, APIURL, Categories,MapSettings,UPDATE_INTERVAL) {
       
       var markers = [];
       var markerObj = [];
@@ -64,7 +64,6 @@ angular.module('starter.controllers', [])
 
 
       }
-      //google.maps.event.addDomListener(window, 'load', initialize);
       initialize();
 
 
@@ -105,12 +104,15 @@ angular.module('starter.controllers', [])
 
         var selectedTags = Categories.getActive();
         clearMarkers();
-        $http({
+        var locations = $http.get(CORSURL+APIURL+"/locations"),
+        events = $http.get(CORSURL+APIURL+"/events");
+        /*$http({
           method: 'GET',
           headers : {"content-type" : "application/json"},
           params: {category: selectedTags.join(',')},
           url: CORSURL+APIURL
-            }).then(function successCallback(response) {
+            })*/
+          $q.all([locations, events]).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
 
@@ -119,9 +121,8 @@ angular.module('starter.controllers', [])
             $timeout(function(){
               $ionicLoading.hide();
             });
-
             var geocoder = new google.maps.Geocoder(); 
-            var res = response.data;
+            var res = response[0].data.concat(response[1].data);
             var traffic;
             var tag;
             markers = [];
