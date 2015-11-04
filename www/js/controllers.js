@@ -138,7 +138,7 @@ angular.module('starter.controllers', [])
 
             for(var i=0;i < res.length; i++){
                   markers.push(res[i]);
-                  content = '<br>';
+                  content = JSON.stringify(res[i]);
                   tag = Categories.getIcon(res[i].category);
                   var title = res[i].title;
                   // this is still random
