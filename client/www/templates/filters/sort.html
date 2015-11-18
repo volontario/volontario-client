@@ -1,0 +1,7 @@
+<span class="total" ng-bind="clothCount || 0" menu-close></span> clothes available
+<select 
+	class="button-sort" 
+	ng-change="sortChanged(sortby)"
+	ng-model="sortby" 
+ 	ng-options="item.value as item.label for item in sortOptions" >
+</select>

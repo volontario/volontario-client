@@ -1,33 +1,116 @@
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-light">
+  <ion-side-menu-content drag-content="::isNotAndroid" edge-drag-threshold="::dragThreshold"> <!--drag-content="true" edge-drag-threshold="10"-->
+    <ion-nav-bar class="bar-calm main-title" > <!-- align-title="center"-->
       <ion-nav-back-button>
       </ion-nav-back-button>
 
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <button class="button button-icon ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+
+
+
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-light">
-      <h1 class="title">Menu</h1>
+
+
+
+  <ion-side-menu side="left"> 
+
+    <!--
+    <ion-header-bar class="bar-stable">
+      <h1 class="title filter-title">Customize</h1>
+      <button menu-close ng-click="editAvatar()" class="button button-icon button-user">
+          <span ng-if="user.gender!=='mens'" ng-include="'templates/user-avatar-female-svg.html'" ></span>
+          <span ng-if="user.gender==='mens'" ng-include="'templates/user-avatar-male-svg.html'"></span>
+      </button>
     </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close href="#/app/map">
-          Kartta
+    -->
+  
+    <ion-content class="filtermenu">
+
+    <div class="custom-bar-header">
+      <div class="flex">
+        <button menu-close ng-click="editAvatar()" class="button button-icon button-user">
+            <span class="face" ng-if="user.gender!=='mens'" ng-include="'templates/user-avatar-female-svg.html'" ></span>
+            <span class="face" ng-if="user.gender==='mens'" ng-include="'templates/user-avatar-male-svg.html'"></span>
+            <span class="icon ion-gear-a"></span>
+        </button>
+        <h1>
+          <span>User Name</span>
+          @username
+        </h1>
+      </div>
+
+    </div>
+
+
+
+
+    <ion-list class="navigation--basic" >
+        <ion-item class="item-icon-left item-light" ui-sref="app.map" ui-sref-active="current" menu-close>
+          <span class="icon ion-map"></span> Map
         </ion-item>
-        <ion-item menu-close href>
-          Support
+    </ion-list>
+
+    <ion-list class="navigation--basic" >
+        <ion-item class="item-icon-left item-light" ui-sref="app.settings" ui-sref-active="current" menu-close>
+          <span class="icon ion-android-settings"></span> Settings
         </ion-item>
-        <ion-item menu-close href>
-          Kirjaudu ulos
+
+        <ion-item class="item-icon-left item-light" ui-sref="app.help" ui-sref-active="current" menu-close>
+          <span class="icon ion-android-happy"></span> Help & Feedback
         </ion-item>
+
+      
+    </ion-list>
+
+<!--
+      <ion-list class="filters section" ng-class="{'inactive':!show.top}">
+
+        <ion-toggle class="item-divider" ng-model="show.top" toggle-class="toggle-calm">Top</ion-toggle>
+
+        <ion-item class="item-light filter-color filter" ng-include src="'templates/filters/color.html'">
+        </ion-item>
+
+
       </ion-list>
+
+      <ion-list class="filters section" ng-class="{'inactive':!show.bottom}">
+
+        <ion-toggle class="item-divider" ng-model="show.bottom" toggle-class="toggle-calm">Bottom</ion-toggle>
+ 
+
+        <ion-item class="item-light filter filter-color" ng-include src="'templates/filters/color.html'">
+        </ion-item>
+
+      </ion-list>
+
+      <br />
+      <a class="button button-small button-clear button-block button-center button-bottom ion-android-close" ng-click="clearFilters()"> Clear filters</a>
+-->
+
     </ion-content>
   </ion-side-menu>
+
+  <!--
+  <ion-side-menu side="right" ng-controller="SelectedCtrl">
+    <ion-header-bar class="bar-calm">
+      <h1 class="title">Favorites</h1>
+
+      <button class="button button-icon right-menu-button ion-android-close" menu-close ></button>
+    
+    </ion-header-bar>
+    <ion-content class="selected-menu" overflow-scroll="true">
+    
+      <div ng-include src="'templates/selected.html'"></div>
+
+      <button ng-show="selected.length" class="button button-small button-clear button-block button-center button-bottom ion-android-close" ng-click="clearSelected()"> Clear favorites</button>
+    </ion-content>
+  </ion-side-menu>
+  -->
+
 </ion-side-menus>

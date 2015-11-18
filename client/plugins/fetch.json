@@ -1,9 +1,16 @@
 {
-    "cordova-plugin-inappbrowser": {
+    "phonegap-plugin-push": {
         "source": {
-            "type": "git",
-            "url": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "phonegap-plugin-push"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "ionic-plugin-deploy": {
+        "source": {
+            "type": "registry",
+            "id": "ionic-plugin-deploy"
         },
         "is_top_level": true,
         "variables": {}

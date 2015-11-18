@@ -1,13 +1,25 @@
-// Ionic Starter App
+// kick off the platform web client
+Ionic.io();
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ngStorage','ngCordova'])
+// this will give you a fresh user or the previously saved 'current user'
+var user = Ionic.User.current();
 
-.run(function($ionicPlatform) {
+// if the user doesn't have an id, you'll need to give it one.
+if (!user.id) {
+  user.id = Ionic.User.anonymousId();
+  // user.id = 'your-custom-user-id';
+}
+
+//persist the user
+user.save();
+
+angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.analytics','lg.controllers','lg.services','transparentize','ionic.contrib.ui.tinderCards','ngStorage','ngTable'])
+
+.run(function($ionicPlatform,$ionicAnalytics) {
   $ionicPlatform.ready(function() {
+
+    $ionicAnalytics.register();
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -22,33 +34,66 @@ angular.module('starter', ['ionic', 'starter.controllers','ngStorage','ngCordova
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+
+.config(function($stateProvider, $urlRouterProvider,$httpProvider,$ionicConfigProvider,$compileProvider) {
+  
+
+
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|file|blob|mailto|whatsapp|spotify):|data:image\//);
+
+
+  $ionicConfigProvider.views.transition('none');
+  $ionicConfigProvider.backButton.text('');
+
   $stateProvider
 
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'AppCtrl'
+    })
+
+
+    .state('app.favorites', {
+        url: '/favorites',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/favorites.html',
+            controller: 'SelectedCtrl'
+          }
+        }
+    })
+
     .state('app.map', {
-      url: '/map',
+        url: '/map',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/map.html',
+            controller: 'MapCtrl'
+          }
+        }
+    })
+
+
+    .state('app.help', {
+      url: '/help',
       views: {
         'menuContent': {
-          templateUrl: 'templates/map.html',
-          controller: 'MapCtrl'
+          templateUrl: 'templates/help.html'
         }
       }
     })
-      .state('app.login', {
-      url: '/login',
+
+    .state('app.settings', {
+      url: '/settings',
       views: {
         'menuContent': {
-          templateUrl: 'templates/login.html',
-          controller: 'LoginController'
+          templateUrl: 'templates/settings.html'
         }
       }
-  });
+    });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
 });

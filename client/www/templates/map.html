@@ -1,24 +1,22 @@
-<ion-view view-title="Volontar.io">
-
- <ion-nav-buttons side="right">
-    
-    <a class="button button-icon button-small button-remove ion-android-close" href ng-show="selectedCategories.length" ng-click="clearAll()"></a>
-
-</ion-nav-buttons>
-
- <ion-content>
+<ion-view view-title="">
+  <ion-content  data-tap-disabled="true">
+ 
       <div id="map" data-tap-disabled="true"></div>
       <div class="button-set">
-        <span class="button-set__action-buttons" ng-if="buttonsVisible">
+          <div class="button-set__action-buttons" ng-if="showFilter"  ng-class="{open:buttonsVisible}" ng-click="buttonsVisible=!buttonsVisible">
+        <span class="button-set__action-buttons" ng-if="!buttonsVisible">
             <a ng-repeat="category in categories track by category.id"
             class="button button-light button-round button-round--small {{category.icon}}"
             ng-class="{'selected':selectedCategories.indexOf(category.name)>=0}"
             ng-click="toggleCategory(category.name)"
             ></a>
         </span>
-        <a class="button button-light button-round button-toggle ion-android-funnel" ng-class="{open:buttonsVisible}" ng-click="buttonsVisible=!buttonsVisible">
-          <span class="badge badget-balanced" ng-if="selectedCategories.length">{{selectedCategories.length}}</span>
-        </a>
-      </div>
-    </ion-content>
+    </div>
+    <button
+      ng-click="showFilter=!showFilter" 
+      class="button button-light icon button-filters button-round"
+      ng-class="{'button--open':showFilter }"><i></i>
+      </button>
+  </div>
+  </ion-content>
 </ion-view>
