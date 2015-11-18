@@ -1,8 +1,8 @@
 angular.module('lg.controllers')
 // URL to API that enables cross-origin requests to anywhere
- .value('CORSURL', '')
- .value('APIURL', 'http://84.234.67.32/analytics/')
- .value('UPDATE_INTERVAL', '500000')
+ .value('CORSURL', '//cors-anywhere.herokuapp.com/')
+ .value('APIURL', 'https://volontario-server.herokuapp.com/')
+ .value('UPDATE_INTERVAL', '100000')
 
 .controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval,CORSURL, APIURL, Categories,MapSettings,UPDATE_INTERVAL) {
 
@@ -79,7 +79,7 @@ angular.module('lg.controllers')
         var selectedTags = Categories.getActive();
         clearMarkers();
         var locations = $http.get(CORSURL+APIURL+"/locations"),
-        events = $http.get(CORSURL+APIURL+"/events");
+        events = $http.get(CORSURL+APIURL+"/events?"+selectedTags);
         /*$http({
           method: 'GET',
           headers : {"content-type" : "application/json"},
@@ -148,7 +148,7 @@ angular.module('lg.controllers')
                       map: $scope.map,
                       title: title,
                       icon: ' ',
-                      labelContent: '<span class="'+tag+'"></span><span class="ion-person-stalker activity icon"></span><span class="sale icon">%</span><svg class="progress" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><g><circle id="circle_'+i+'" class="circle_animation" r="16" cy="18" cx="18" fill="none"/></g></svg>',
+                      labelContent: '<span class="'+tag+'"></span><span class="ion-person-stalker activity icon">',
                       labelAnchor: new google.maps.Point(18, 18),
                       labelClass: className,
                       html: content                       
@@ -197,7 +197,7 @@ angular.module('lg.controllers')
                     content = res[i].title +'<br><span class="discount">'+ (res[i].discounts[0].description||'')+'</span>';
                     classes += ' has-sale';
                 }
-                var labelContent = '<span class="'+tag+'"></span><span class="ion-person-stalker activity icon"></span><span class="sale icon">%</span><svg class="progress" width="36" height="36" xmlns="http://www.w3.org/2000/svg"><g><circle id="circle_'+i+'" class="circle_animation" r="16" cy="18" cx="18" fill="none"/></g></svg>';
+                var labelContent = '<span class="'+tag+'"></span><span class="ion-person-stalker activity icon"></span>';
                 
                 
                 // update content
