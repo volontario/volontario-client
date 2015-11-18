@@ -1,6 +1,6 @@
 {
-  "name": "smarTre",
-  "app_id": "",
+  "name": "Volontario",
+  "app_id": "ca39b02a",
   "gulpStartupTasks": [
     "sass",
     "watch"

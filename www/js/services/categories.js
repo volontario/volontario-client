@@ -1,8 +1,8 @@
 
-angular.module('starter')
+angular.module('lg')
 
 /* 
-*	Get JSON
+* Get JSON
 */
 .factory('Categories',function($http, $q, $localStorage) {
 
@@ -51,10 +51,10 @@ angular.module('starter')
       if(!$localStorage.categories || !_.isArray($localStorage.categories))
         $localStorage.categories = [];
 
-	return {
-		all: function(url,params) {
+  return {
+    all: function(url,params) {
       return categories;
-		},
+    },
     toggle: function(categoryId){
       var categoryPos = $localStorage.categories.length ? $localStorage.categories.indexOf(categoryId) : -1;
       categoryPos >= 0 ? $localStorage.categories.splice(categoryPos,1) : $localStorage.categories.push(categoryId);
@@ -69,6 +69,6 @@ angular.module('starter')
       $localStorage.categories = [];
     }
 
-	}
+  }
 
 });

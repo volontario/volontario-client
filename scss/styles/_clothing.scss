@@ -1,0 +1,153 @@
+/* Clothings */
+
+
+#cloth-changer {
+	padding-top:18vh;
+	margin-top: 0;
+  height: 82vh;
+ // overflow: hidden;
+ // background: url('/img/female-torso.png') no-repeat 50% 10%;
+ // background-size: 50% auto; 
+
+  .face svg {
+    top:5vh;
+    height: 23vh;
+    left: 50%;
+    transform:translate3d(-50%,0,0);
+    -webkit-transform:translate3d(-50%,0,0);
+    position: absolute;
+    z-index: 6;
+    display: block;
+    margin: 0 auto;
+    //filter:drop-shadow(0 0px 2px rgba(0,0,0,.3));
+    //-webkit-filter:drop-shadow(0 0px 2px rgba(0,0,0,.3));
+
+    //transform-origin:50% 50%;
+    /*
+    animation: popup 0.25s ease-in;
+    -webkit-animation: popup 0.25s ease-in;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards; 
+    */
+    //-webkit-animation:  popup 0.15s ease-in;
+
+  }
+
+
+
+}
+.cloth-wrap{
+  position: relative;
+  height:30vh;
+  text-align: center;
+  .loader {
+
+    @include vh-middle();
+    
+    svg {
+      stroke:darken($stable,10%);
+      height: 7vh;
+      width: 7vh;
+    }
+  }
+}
+#cloth-top {
+	z-index: 4;
+  .womens & {
+      canvas {
+        max-height: 33vh; // Women Top
+      }
+  }
+}
+
+#cloth-bottom {
+	z-index: 3;
+  height:32vh;
+	margin-top:-6vh;
+  &.front {z-index: 5;}
+	td-card {
+		//padding-bottom: 50px;
+	}
+}
+
+td-cards {
+  display: block;
+  position: relative;
+//  height:30vh;
+  
+  
+  td-card {
+    position: absolute;
+    left: 50%;
+    margin-top: 0px;
+    margin-bottom: 0;
+    margin-left: -22vw;
+    width: 44vw;
+    height: auto;
+    transition:none;
+
+    .transparent {
+      display: inline;
+      img {opacity: 0;}
+    }
+    opacity: 0;
+    &:first-child {opacity: 1; }
+    &:nth-child(2)  { transition:opacity 0.15s ease; }
+
+  }
+  &.peeking {
+    td-card:nth-child(2)  {opacity: 1; }
+  }
+
+}
+
+
+
+
+td-card .image {
+  position: relative;
+  text-align: center; 
+}
+
+td-card img, td-card canvas {
+ // max-width: 100%;
+ max-height: 36vh;
+
+}
+td-card canvas {
+  //-webkit-filter:drop-shadow(0 0 10px red);
+  //filter:drop-shadow(0 0 10px red);
+}
+
+.yes-text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 30px;
+  color: rgb(111, 250, 111);
+  opacity: 0;
+}
+.no-text {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: rgb(255, 115, 115);
+  opacity: 0;
+}
+
+.button.pricetag {
+  z-index:10;
+  position:absolute;
+  right:0;
+  top:0;
+  border:none;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 50px;
+  width:50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  font-family: $font-family-simple;
+}

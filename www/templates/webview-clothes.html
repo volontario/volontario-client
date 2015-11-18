@@ -1,0 +1,76 @@
+<div class="bg">
+
+<span class="totalprice" ng-if="totalPrice">{{totalPrice}}<span class="currency">€</span></span>
+
+
+<div id="cloth-changer" ng-class="user.gender">
+
+
+  <span class="face"  ng-if="user.gender!=='mens'" ng-include="'templates/user-avatar-female-svg.html'" >
+    </span>
+  <span class="face" ng-if="user.gender==='mens'" ng-include="'templates/user-avatar-male-svg.html'">
+    </span>
+
+
+
+  <div class="cloth-wrap" id="cloth-top" on-double-tap="bringBottomFront(false)">
+     <td-cards ng-if="clothesTop.length" ng-class="{peeking:peekingTop}">
+        <td-card ng-repeat="cloth in clothesTop" 
+          on-drag="peekTop()"
+          on-destroy="topDestroyed($index)" 
+          on-swipe-left="topSwipedLeft($index)" 
+          on-swipe-right="topSwipedRight($index)" 
+          on-snap-back="peekTopEnd()"
+          >
+          <div class="image" >
+            <canvas class="transparent" transparentize data-imgurl="cloth.image"></canvas>
+          </div>
+          
+        </td-card>
+      </td-cards>
+      <ion-spinner icon="lines" class="spinner-stable loader" ng-show="!clothesTop.length" ></ion-spinner>
+    </div>
+
+
+
+    <div class="cloth-wrap" id="cloth-bottom" on-double-tap="bringBottomFront(true)" ng-class="{'front':bottomFront}">
+	   <td-cards ng-if="clothesBottom.length" ng-class="{peeking:peekingBottom}" >
+
+        <td-card ng-repeat="cloth in clothesBottom" 
+        on-destroy="bottomDestroyed($index)" 
+        on-swipe-left="bottomSwipedLeft($index)" 
+        on-swipe-right="bottomSwipedRight($index)" 
+        on-drag="peekBottom()"
+        on-snap-back="peekBottomEnd()"
+        >
+          <div class="image" >
+            <canvas class="transparent" transparentize data-imgurl="cloth.image"></canvas>
+          </div>
+        </td-card>
+      </td-cards>
+      <ion-spinner icon="lines" class="spinner-stable loader" ng-show="!clothesBottom.length"></ion-spinner>
+    </div>
+
+
+</div>
+
+
+
+  </div>
+
+  <button 
+    ng-if="clothesBottom.length||clothesTop.length"
+    ng-click="addToFavorite()" 
+    class="button button-royal icon button-round bottom-right "
+    ng-class="{'activebtn button-energized ion-android-done':liked,'ion-android-favorite-outline':!liked }"
+  >
+    <span class="indicator ion-android-favorite"></span>
+  </button>
+
+
+  <button
+    ng-if="history.length"
+    ng-click="back()" 
+    class="button button-stable icon button-round bottom-left ion-reply"
+  ></button>
+

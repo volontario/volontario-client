@@ -1,0 +1,55 @@
+
+
+
+
+
+
+<a 	class="button button-small button-clear" 
+	ng-click="toggleColorChange()"
+	ng-if="!filter.color.length && !colorChooseMode"
+	>
+	Choose Colors
+</a>
+
+<div class="chosenColors"  ng-if="filter.color.length && !colorChooseMode">
+	<a class="chosenColors" ng-click="toggleColorChange()">
+		<span 
+			class="color color-{{color}}"
+			ng-repeat="color in filter.color"
+			style="background-color:{{color}}"
+			>
+		</span>
+	</a>
+</div>
+
+<div class="colorPalette" ng-if="colorChooseMode">
+<a href class="acceptSelection action button-icon button button-clear button-royal ion-android-done" ng-click="toggleColorChange()"></a>
+<a href class="clearSelection action button-icon button button-clear button-assertive ion-android-close" ng-show="filter.color.length" ng-click="clearColors()"></a>
+<a href
+   ng-repeat='color in ["black",
+					    "brown",
+					    "beige",
+					    "gray",
+					    "white",
+					    "blue",
+					    "petrol",
+					    "turquoise",
+					    "green",
+					    "olive",
+					    "yellow",
+					    "orange",
+					    "red",
+					    "pink",
+					    "purple",
+					    "gold",
+					    "silver",
+					    "multicolored"]'
+	style="background-color:{{color}}"
+	ng-click="toggleColor(color)"
+	class="color color-{{color}}"
+	ng-class="{'activated ion-android-done':activeColor(color)}"
+></a>
+</div>
+
+
+    

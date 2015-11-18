@@ -1,0 +1,72 @@
+
+<ion-list class="selected-clothes" can-swipe="true">
+
+	<ion-item ng-repeat="cloth in selected" ng-class="{'detail-open':showDetail}" ng-click="showDetail=!showDetail"> 
+		
+		<!--
+		<ion-option-button class="button-energized" ng-click="actions.share(cloth)">
+	      Share
+	    </ion-option-button>
+	    <ion-option-button class="button-royal" ng-click="actions.buy(cloth)" ng-href="{{cloth.top.shopUrl}}">
+	      Buy
+	    </ion-option-button>
+	    -->
+
+	    <span class="imgs" >
+
+			<img class="clothing" ng-src="{{cloth.top.image}}" />
+			<img class="clothing" ng-src="{{cloth.bottom.image}}" />
+		</span>
+
+		<span class="price">{{calcPrice(cloth.top.price, cloth.bottom.price)}} €</span>
+
+		<span class="actions">
+			<a href 
+	    	class="button button-clear button-icon toggle-detail" 
+	    	ng-class="{'ion-android-arrow-dropdown':!showDetail,'button-calm ion-android-arrow-dropup':showDetail}" 
+	    	></a>
+			<!-- <a class="button button-icon remove ion-android-close" href ng-click="removeFromSelected(i)"></a> -->
+		</span>
+
+		<div class="cloth-detail" ng-if="showDetail">
+			<div class="row">
+				<span class="col col-75">
+					<span class="name" ng-bind="cloth.top.name" ></span>
+					<span class="brand" ng-bind="cloth.top.brand" ></span>
+				</span>
+				<span class="price col" ng-bind="calcPrice(cloth.top.price)+' €'"></span>
+			</div> 
+			<div class="row">
+				<span class="col col-75">
+					<span class="name" ng-bind="cloth.bottom.name" ></span>
+					<span class="brand" ng-bind="cloth.bottom.brand" ></span>
+				</span>
+				<span class="price col" ng-bind="calcPrice(cloth.bottom.price)+' €'"></span>
+			</div>
+
+			<div class="added ion-android-time" ng-bind="' '+ getTimeAgo(cloth.date)"></div>
+
+			<div class="button-bar ">
+			  <a class="button button-small button-clear button-stable" ng-click="actions.wear(cloth)" menu-close>Wear</a>
+			  <a class="button button-small button-clear button-calm" ng-click="actions.share(cloth)">Share</a>
+			  <a class="button button-small button-clear button-royal" ng-click="actions.buy(cloth)">Buy</a>
+			</div>
+		</div>
+
+	</ion-item>
+
+</ion-list>
+
+<a class="no-selected" ng-if="!selected.length" menu-close>
+	<!-- <span class="ion-bowtie"></span> -->
+	<img src="img/icon/heart.svg" class="oneline-icon" />
+
+	Haven't found your favorites yet? <br> Keep on trying!
+</a>
+
+<button 
+	ng-show="selected.length" 
+	class="button button-small button-clear button-block button-center button-bottom ion-android-close"
+	ng-click="clearSelected()"> 
+	Clear favorites
+</button>

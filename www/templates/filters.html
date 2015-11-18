@@ -1,0 +1,69 @@
+<ion-view view-title="Customize" class="no-box-shadow"> 
+
+
+    <ion-content>
+
+<div class="filterlayer view-huge-drop"  >
+  
+  <div class="button-bar top-tab">
+    <a class="button button-clear button-large ion-woman " ng-class="{'selected':selectedTab!='top' && selectedTab!='bottom'}" ng-click="selectedTab='gender'"></a>
+    <a class="button button-clear button-large flaticon-t-shirt4" ng-class="{'selected':selectedTab=='top'}" ng-click="selectedTab='top'" ></a>
+    <a class="button button-clear button-large flaticon-clothing232" ng-class="{'selected':selectedTab=='bottom'}" ng-click="selectedTab='bottom'"></a>
+  </div>
+
+  <div class="filterlayer__second-level" ng-switch="selectedTab">
+    <div class="button-bar" ng-switch-default>
+      <a class="button button-clear button-large selected"><span class="ion-woman block"></span> Women</a>
+      <a class="button button-clear button-large "><span class="ion-man block"></span> Men</a>
+    </div>
+
+    <div class="button-bar" ng-switch-when="top">
+      <a class="button button-clear button-large "><span class="flaticon-basketball12 block"></span> Tops</a>
+      <a class="button button-clear button-large selected" ><span class="flaticon-t-shirt4 block"></span> T-shirt</a>
+      <a class="button button-clear button-large "><span class="flaticon-clothing182 block"></span> Long</a>
+      <a class="button button-clear button-large "><span class="flaticon-clothing260 block"></span> Jacket</a>
+    </div>
+
+    <div class="button-bar" ng-switch-when="bottom">
+      <a class="button button-clear button-large "><span class="flaticon-clothing165 block"></span> Short</a>
+      <a class="button button-clear button-large selected" ><span class="flaticon-clothing232 block"></span> Long</a>
+    </div>
+
+
+
+  </div>
+
+<div class="sub-filters filter-color" ng-show="selectedTab=='top'||selectedTab=='bottom'">
+  <div class="center title">{{selectedTab}} Color</div>
+  <div class="colorPalette" >
+    <a href
+       ng-repeat='color in [
+                  "black",
+                  "brown",
+                  "gray",
+                  "white",
+                  "blue",
+                  "green",
+                  "yellow",
+                  "red"]'
+      style="background-color:{{color}}"
+      ng-click="toggleColor(color)"
+      class="color color-{{color}}"
+      ng-class="{'activated ion-android-done':activeColor(color)}"
+    ></a>
+  </div>
+
+
+
+</div>
+
+<div class="filter-face" ng-click="editAvatar()" ng-if="selectedTab!='top' && selectedTab!='bottom'">
+  <span class="face" ng-if="user.gender!=='mens'" ng-include="'templates/user-avatar-female-svg.html'" ></span>
+  <span class="face" ng-if="user.gender==='mens'" ng-include="'templates/user-avatar-male-svg.html'"></span>
+</div>
+
+
+
+</div>  
+</ion-content>
+</ion-view>
