@@ -2,7 +2,7 @@ angular.module('lg.controllers')
 // URL to API that enables cross-origin requests to anywhere
  .value('CORSURL', '//cors-anywhere.herokuapp.com/')
  .value('APIURL', 'https://volontario-server.herokuapp.com/')
- .value('UPDATE_INTERVAL', '100000')
+ .value('UPDATE_INTERVAL', '10000000')
 
 .controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval,CORSURL, APIURL, Categories,MapSettings,UPDATE_INTERVAL) {
 
@@ -112,11 +112,11 @@ angular.module('lg.controllers')
 
             for(var i=0;i < res.length; i++){
                   markers.push(res[i]);
-                  content = JSON.stringify(res[i]);
+                  content = JSON.stringify(res[i].name) || JSON.stringify(res[i].title);
                   tag = Categories.getIcon(res[i].category);
                   var title = res[i].title;
                   // this is still random
-                  traffic = 1;//Math.round(res[i].traffic.average*100) || 0;
+                  traffic = 1;
                   // define activity class
                   var light = 'darkest';
                   if(traffic<25){
@@ -131,12 +131,7 @@ angular.module('lg.controllers')
 
                   // define label class
                   var className = "labels "+light;
-                  // sale class, should come from markers[i].sale or something
-                  /*if(res[i].discounts[0]){
-                    content = res[i].title +'<br><span class="discount">'+ (res[i].discounts[0].description||'')+'</span>';
-                    className += ' has-sale';
-                  }*/
-
+          
                   // Get center
                   var coords = new google.maps.LatLng(
                     res[i].coordinates.latitude,
