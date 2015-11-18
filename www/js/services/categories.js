@@ -30,13 +30,13 @@ angular.module('lg')
           id:3,
           icon:'ion-heart',
           name:'bloodServiceCentre',
-          title:"bloodServiceCentre"
+          title:"BloodServiceCentre"
         },
         {
           id:4,
-          icon:'ion-ios-cart',
-          name:'shop',
-          title:"Shop"
+          icon:'ion-tshirt-outline',
+          name:'donation',
+          title:"Donations"
         },
         {
           id:5,
