@@ -1,5 +1,8 @@
+logs/*
+!.gitkeep
 node_modules/
 bower_components/
-.tmp/
-gen/
-docs/
+tmp
+.DS_Store
+.idea
+app/jspm_packages
