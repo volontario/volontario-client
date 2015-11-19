@@ -2,7 +2,7 @@
  .value('CORSURL', '//cors-anywhere.herokuapp.com/')
  .value('APIURL', 'https://volontario-server.herokuapp.com/')
  .value('UPDATE_INTERVAL', '10000000')
-app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog','$http', function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, CORSURL, APIURL){
+app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog','$http','CORSURL','APIURL', function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, CORSURL, APIURL){
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
   };
@@ -35,7 +35,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
       icon: 'settings'
     }
   ];
-
+ // get activities locations or events TODO: add get by user-id
   $http({
   method: 'GET',
   url: "//cors-anywhere.herokuapp.com/https://volontario-server.herokuapp.com/locations",
@@ -45,6 +45,21 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
     // called asynchronously if an error occurs
     // or server returns response with an error status.
   });
+
+   // POST new event or events TODO: params
+  function newEvent(){
+    var data = "category=bloodServiceCentre&latitude=65.0203311&longitude=27.699796&name=mahPlace&url=coming";
+    $http({
+    method: 'POST',
+    url: CORSURL+APIURL+"/locations?",
+    data: { test: 'test' }
+    }).then(function successCallback(response) {
+      $scope.activity = response.data;
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+  }
 
 
   $scope.alert = '';
@@ -62,10 +77,11 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
   $scope.showAdd = function(ev) {
     $mdDialog.show({
       controller: DialogController,
-      template: '<md-dialog aria-label="Mango (Fruit)"> <md-content class="md-padding"> <form name="userForm"> <div layout layout-sm="column"> <md-input-container flex> <label>First Name</label> <input ng-model="user.firstName" placeholder="Placeholder text"> </md-input-container> <md-input-container flex> <label>Last Name</label> <input ng-model="theMax"> </md-input-container> </div> <md-input-container flex> <label>Address</label> <input ng-model="user.address"> </md-input-container> <div layout layout-sm="column"> <md-input-container flex> <label>City</label> <input ng-model="user.city"> </md-input-container> <md-input-container flex> <label>State</label> <input ng-model="user.state"> </md-input-container> <md-input-container flex> <label>Postal Code</label> <input ng-model="user.postalCode"> </md-input-container> </div> <md-input-container flex> <label>Biography</label> <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea> </md-input-container> </form> </md-content> <div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button> <md-button ng-click="answer(\'useful\')" class="md-primary"> Save </md-button> </div></md-dialog>',
+      template: '<md-dialog aria-label="Mango (Fruit)"> <md-content class="md-padding"> <form name="userForm"> <div layout layout-sm="column"> <md-input-container flex> <label>First Name</label> <input ng-model="user.firstName" placeholder="Placeholder text"> </md-input-container> <md-input-container flex> <label>Last Name</label> <input ng-model="theMax"> </md-input-container> </div> <md-input-container flex> <label>Address</label> <input ng-model="user.address"> </md-input-container> <div layout layout-sm="column"> <md-input-container flex> <label>City</label> <input ng-model="user.city"> </md-input-container> <md-input-container flex> <label>State</label> <input ng-model="user.state"> </md-input-container> <md-input-container flex> <label>Postal Code</label> <input ng-model="user.postalCode"> </md-input-container> </div> <md-input-container flex> <label>Biography</label> <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea> </md-input-container> </form> </md-content> <div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button> <md-button ng-click="newEvent()" class="md-primary"> Save </md-button> </div></md-dialog>',
       targetEvent: ev,
     })
     .then(function(answer) {
+      newEvent();
       $scope.alert = 'You said the information was "' + answer + '".';
     }, function() {
       $scope.alert = 'You cancelled the dialog.';
