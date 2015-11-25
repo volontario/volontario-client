@@ -1,20 +1,15 @@
 angular.module('lg.controllers')
+ .value('CORSURL', '//cors-anywhere.herokuapp.com/')
+ .value('APIURL', 'https://volontario-server.herokuapp.com/')
+.controller('UserCtrl', function($scope,$rootScope,$state,$http, CORSURL, APIURL) {
 
-.controller('UserCtrl', function($scope,$rootScope,$state,User) {
+	$scope.user = {};
+	 
+	 $http.get(CORSURL+APIURL+'/users/5655c20b1f771103001ff9bd').then(function successCallBack(response){
+		$scope.user = response.data;
+	}, function errorCallBack(response){
 
-	$scope.user = User.get();
-	var gender = $scope.user.gender;
-	$scope.save = function(){
-		$state.go('app.clothes')
-		//$ionicHistory.goBack()
-	}
-
-	$scope.$on('$ionicView.leave', function(e) {
-		if($scope.user.gender!==gender){
-			$rootScope.$broadcast('filterChange');
-		}
 	})
-
 })
 
 
