@@ -1,8 +1,8 @@
 angular.module('lg.services',[])
 
 .value('corsURL', 'https://this-cors.herokuapp.com/')
-//.value('corsURL', '')
-
+ .value('CORSURL', '//cors-anywhere.herokuapp.com/')
+ .value('APIURL', 'https://volontario-server.herokuapp.com/')
 .value('articleAPI', '')
 .value('outfitAPI','')
 .constant('eurToPound','1.36920393')
@@ -161,24 +161,24 @@ angular.module('lg.services',[])
 
 })
 
-.factory('User', function($localStorage,$rootScope) {
-
-
-
-	// Init with defaults
-    if(!$localStorage.user){
-      	$localStorage.user = {
-			gender:'mens',
-			skin:'medium',
-			hair:'dark',
-			hairlength:'long', // For women
-			beard:true,
-			hairtype:'short' // for men
-		}
-    }
-
+.factory('User', function($localStorage,$rootScope, $http, CORSURL, APIURL) {
     return {
       get: function(){
+	 $http.get(CORSURL+APIURL+'/users/5655c20b1f771103001ff9bd').then(function successCallBack(response){
+		user = response.data;
+			// Init with defaults
+		      	$localStorage.user = {
+					givenName: user.givenName,
+					familyName: user.familyName,
+					phoneNumber: user.phoneNumber,
+					email: user.email, // For women
+					id: user.id,
+					dateOfBirth: user.dateOfBirth // for men
+				}
+		    
+			}, function errorCallBack(response){
+
+			})
         return $localStorage.user;
       }
     };
