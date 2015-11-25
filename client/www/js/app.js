@@ -85,6 +85,16 @@ angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.ana
       }
     })
 
+    .state('app.avatar', {
+      url: '/user',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/user.html',
+          controller: 'UserCtrl'
+        }
+      }
+    })
+
     .state('app.settings', {
       url: '/settings',
       views: {

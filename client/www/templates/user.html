@@ -1,4 +1,4 @@
-<ion-view view-title="Avatar">
+<ion-view view-title="Profile">
   
   <!--
     <ion-nav-title>
@@ -11,65 +11,48 @@
   </ion-nav-buttons>
   
 
-<ion-content class="edit-user padding">
+  <ion-content overflow-scroll="true" class="ion-content--grey">
+    
+
+    <div class="view-fade-in" >
+      
+      <div class="card info-card">
+        <div class="item item--header">
+          <i class="icon ion-android-settings" ></i> Profile
+        </div>
+        <div class="item item--no-border item-text-wrap">
+          <label>Name:
+          <input type="text" name="userName"
+             ng-model="user.givenName"
+             ng-model-options="{ getterSetter: true }" />
+          </label>
+          <label>Lastname:
+           <input type="text" name="userName"
+             ng-model="user.familyName"
+             ng-model-options="{ getterSetter: true }" />
+          </label>
+          <label>Phone:
+           <input type="text" name="userName"
+             ng-model="user.phoneNumber"
+             ng-model-options="{ getterSetter: true }" />
+          </label>
+          <label>id:
+           <input type="text" name="userName"
+             ng-model="user.id"
+             ng-model-options="{ getterSetter: true }" />
+          </label>
+          <label>Date of birth:
+           <input type="text" name="userName"
+             ng-model="user.dateOfBirth"
+             ng-model-options="{ getterSetter: true }" />
+          </label>
+
+        </div>
+      </div>
 
 
-  <div class="face row" 
-    on-swipe-right="user.gender='womens'"
-    on-swipe-left="user.gender='mens'"
-  >
-    <span class="col first" ng-click="user.gender='womens'" ng-class="{active:user.gender!=='mens'}" ng-include="'templates/user-avatar-female-svg.html'" >
-    </span>
-    <span class="col last" ng-click="user.gender='mens'" ng-class="{active:user.gender==='mens'}" ng-include="'templates/user-avatar-male-svg.html'">
-    </span>
-  </div>
-
-
-
-<div class="list">
-
-
-
-  <label class="item item-input item-select select-skin user-selection">
-    <div class="input-label">
-      Skin
     </div>
-    <select ng-model="user.skin" 
-    ng-options="color as color for color in ['dark','medium','light']" >
-    </select>
-  </label>
-
-  <label class="item item-select  item-input select-hair user-selection">
-    <div class="input-label">
-      Hair Color
-    </div>
-    <select ng-model="user.hair" 
-    ng-options="color as color for color in ['dark','red','blond']" >
-    </select>
-  </label>
 
 
-  <label class="item item-input item-select select-length user-selection" ng-if="user.gender!=='mens'">
-    <div class="input-label">
-      Hairstyle
-    </div>
-    <select ng-model="user.hairlength" 
-    ng-options="color as color for color in ['long','short']" >
-    </select>
-  </label>
-
-  <label class="item item-input item-select select-length user-selection" ng-if="user.gender==='mens'">
-    <div class="input-label">
-      Hairstyle
-    </div>
-    <select ng-model="user.hairtype" 
-    ng-options="color as color for color in ['short','bald']" >
-    </select>
-  </label>
-
-  <ion-toggle class="user-selection" ng-if="user.gender==='mens'" ng-model="user.beard" toggle-class="toggle-royal">Beard</ion-toggle>
-
-</div>
-
-
-</ion-content>
+  </ion-content>
+</ion-view>
