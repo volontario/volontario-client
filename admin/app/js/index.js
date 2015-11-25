@@ -47,12 +47,13 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
   });
 
    // POST new event or events TODO: params
+   $scope.add = [];
   function newEvent(){
     var data = "category=bloodServiceCentre&latitude=65.0203311&longitude=27.699796&name=mahPlace&url=coming";
+    addUrl = "http://cors-anywhere.herokuapp.com/https://volontario-server.herokuapp.com/locations?category="+$scope.add.category+"&latitude="+$scope.add.latitude+"&longitude="+$scope.add.longitude+"&name="+$scope.add.name+"&url="+$scope.add.url;
     $http({
     method: 'POST',
-    url: CORSURL+APIURL+"/locations?",
-    data: { test: 'test' }
+    url: addUrl,
     }).then(function successCallback(response) {
       $scope.activity = response.data;
     }, function errorCallback(response) {
@@ -77,11 +78,13 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
   $scope.showAdd = function(ev) {
     $mdDialog.show({
       controller: DialogController,
-      template: '<md-dialog aria-label="Mango (Fruit)"> <md-content class="md-padding"> <form name="userForm"> <div layout layout-sm="column"> <md-input-container flex> <label>First Name</label> <input ng-model="user.firstName" placeholder="Placeholder text"> </md-input-container> <md-input-container flex> <label>Last Name</label> <input ng-model="theMax"> </md-input-container> </div> <md-input-container flex> <label>Address</label> <input ng-model="user.address"> </md-input-container> <div layout layout-sm="column"> <md-input-container flex> <label>City</label> <input ng-model="user.city"> </md-input-container> <md-input-container flex> <label>State</label> <input ng-model="user.state"> </md-input-container> <md-input-container flex> <label>Postal Code</label> <input ng-model="user.postalCode"> </md-input-container> </div> <md-input-container flex> <label>Biography</label> <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea> </md-input-container> </form> </md-content> <div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button> <md-button ng-click="newEvent()" class="md-primary"> Save </md-button> </div></md-dialog>',
+      template: '<md-dialog aria-label="Mango (Fruit)"> <md-content class="md-padding"> <form name="addFrom" ng-model-options="{ getterSetter: true }"> <div layout layout-sm="column"> <md-input-container flex> <label>Name</label> <input ng-model="add.name" name="name" placeholder="Placeholder text"> </md-input-container> <md-input-container flex> <label>Last Name</label> <input ng-model="theMax"> </md-input-container> </div> <md-input-container flex> <label>Address</label> <input ng-model="user.address"> </md-input-container> <div layout layout-sm="column"> <md-input-container flex> <label>City</label> <input ng-model="user.city"> </md-input-container> <md-input-container flex> <label>State</label> <input ng-model="user.state"> </md-input-container> <md-input-container flex> <label>Postal Code</label> <input ng-model="user.postalCode"> </md-input-container> </div> <md-input-container flex> <label>Biography</label> <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea> </md-input-container> </form> </md-content> <div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button> <md-button ng-click="answer(\'save\')" class="md-primary"> Save </md-button> </div></md-dialog>',
       targetEvent: ev,
     })
     .then(function(answer) {
-      newEvent();
+      if(answer == 'save')
+         newEvent();
+
       $scope.alert = 'You said the information was "' + answer + '".';
     }, function() {
       $scope.alert = 'You cancelled the dialog.';

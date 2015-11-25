@@ -113,6 +113,9 @@ angular.module('lg.controllers')
             for(var i=0;i < res.length; i++){
                   markers.push(res[i]);
                   content = JSON.stringify(res[i].name) || JSON.stringify(res[i].title);
+                  content += '<br><a href='+JSON.stringify(res[i].url)+'>lue lisää..</a>';
+                  content += '<br><label>Alku<input type="datetime"></label> - <label>Loppu<input type="datetime"></label>';
+                  content += ' <button ng-click="addToCalendar();">Lisää kalenteriin</button>';
                   tag = Categories.getIcon(res[i].category);
                   var title = res[i].title;
                   // this is still random
