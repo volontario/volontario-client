@@ -4,7 +4,7 @@ angular.module('lg.controllers')
  .value('APIURL', 'https://volontario-server.herokuapp.com/')
  .value('UPDATE_INTERVAL', '10000000')
 
-.controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval,CORSURL, APIURL, Categories,MapSettings,UPDATE_INTERVAL) {
+.controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval, $cordovaDatePicker, CORSURL, APIURL, Categories,MapSettings,UPDATE_INTERVAL) {
 
       var markers = [];
       var markerObj = [];
@@ -17,7 +17,39 @@ angular.module('lg.controllers')
       }
       var loading;
 
+    $scope.showDatePickerStart = function () {
+      var options = {
+        date: new Date(),
+        mode: 'datetime',
+        minDate:  moment().subtract(100, 'years').toDate(),
+        allowOldDates: true,
+        allowFutureDates: false,
+        doneButtonLabel: 'Done',
+        doneButtonColor: '#000000',
+        cancelButtonLabel: 'Abort',
+        cancelButtonColor: '#000000'
+      };
 
+      $cordovaDatePicker.show(options).then(function(date){
+      });
+    };
+
+    $scope.showDatePickerEnd = function () {
+      var options = {
+        date: new Date(),
+        mode: 'datetime',
+        minDate:  moment().subtract(100, 'years').toDate(),
+        allowOldDates: true,
+        allowFutureDates: false,
+        doneButtonLabel: 'Done',
+        doneButtonColor: '#000000',
+        cancelButtonLabel: 'Abort',
+        cancelButtonColor: '#000000'
+      };
+
+  $cordovaDatePicker.show(options).then(function(date){
+  });
+};
 
 
       function initialize() {
@@ -69,6 +101,23 @@ angular.module('lg.controllers')
         alert('Example of infowindow with ng-click')
       };
 
+      var CalendarStart = '<div class="list" data-ec5-date>\
+                            <label class="item item-input item-stacked-label">\
+                            <!--  <span class="input-label">{{label}} ({{format}})</span>-->\
+                              <!-- <input type="text" ng-model="inputNavParams.current_value" ng-click="datePicker()" data-ec5-date readonly> -->\
+                              <button class="button button-block button-stable icon-left ion-calendar" ng-click="showDatePickerStart()" data-instantActivate>\
+                                  <span>Alku</span><span>{{inputNavParams.current_value}}</span>\
+                              </button>\
+                          </label>';
+
+      var CalendarEnd =  '<div class="list" data-ec5-date>\
+                          <label class="item item-input item-stacked-label">\
+                              <!--<span class="input-label">{{label}} ({{format}})</span>-->\
+                              <!-- <input type="text" ng-model="inputNavParams.current_value" ng-click="datePicker()" data-ec5-date readonly> -->\
+                              <button class="button button-block button-stable icon-left ion-calendar" ng-click="showDatePickerEnd()" data-instantActivate>\
+                                  <span>loppu</span><span>{{inputNavParams.current_value}}</span>\
+                              </button>\
+                          </label>';
 
       var searchLocations = function() {
         loading = $ionicLoading.show({
@@ -80,12 +129,7 @@ angular.module('lg.controllers')
         clearMarkers();
         var locations = $http.get(CORSURL+APIURL+"/locations"),
         events = $http.get(CORSURL+APIURL+"/events?"+selectedTags);
-        /*$http({
-          method: 'GET',
-          headers : {"content-type" : "application/json"},
-          params: {category: selectedTags.join(',')},
-          url: CORSURL+APIURL
-            })*/
+
           $q.all([locations, events]).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
@@ -112,10 +156,12 @@ angular.module('lg.controllers')
 
             for(var i=0;i < res.length; i++){
                   markers.push(res[i]);
-                  content = JSON.stringify(res[i].name) || JSON.stringify(res[i].title);
+                  content = '<div>'+JSON.stringify(res[i].name) || JSON.stringify(res[i].title);
                   content += '<br><a href='+JSON.stringify(res[i].url)+'>lue lisää..</a>';
-                  content += '<br><label>Alku<input type="datetime"></label> - <label>Loppu<input type="datetime"></label>';
-                  content += ' <button ng-click="addToCalendar();">Lisää kalenteriin</button>';
+                  content += '<br>'+ CalendarStart +'' + CalendarEnd;
+                  content += '<button class="btn waves-effect waves-light" ng-click="addToCalendar();" name="action">Lisää kalenteriin<i class="material-icons right"></i></button>';
+                  var compiled = $compile(content)($scope);
+
                   tag = Categories.getIcon(res[i].category);
                   var title = res[i].title;
                   // this is still random
@@ -155,9 +201,10 @@ angular.module('lg.controllers')
                     animateCircle(i,traffic,500);
                     
                     google.maps.event.addListener(marker, 'click', function() {
-                      infowindow.setContent(this.html)
+                      infowindow.setContent( compiled[0] );
                       infowindow.open($scope.map,this);
                     });
+
               }
             }, function errorCallback(response) {
               $ionicLoading.hide();
