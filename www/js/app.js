@@ -13,7 +13,7 @@ if (!user.id) {
 //persist the user
 user.save();
 
-angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.analytics','lg.controllers','lg.services','transparentize','ionic.contrib.ui.tinderCards','ngStorage','ngTable'])
+angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.analytics','lg.controllers','lg.services','transparentize','ionic.contrib.ui.tinderCards','ngStorage','ngTable','ngCordova'])
 
 .run(function($ionicPlatform,$ionicAnalytics) {
   $ionicPlatform.ready(function() {
