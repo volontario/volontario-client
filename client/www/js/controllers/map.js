@@ -195,13 +195,14 @@ angular.module('lg.controllers')
                       labelContent: '<span class="'+tag+'"></span><span class="ion-person-stalker activity icon">',
                       labelAnchor: new google.maps.Point(18, 18),
                       labelClass: className,
+                      content: compiled[0],
                       html: content                       
                     });
                     markerObj.push(marker);
                     animateCircle(i,traffic,500);
                     
                     google.maps.event.addListener(marker, 'click', function() {
-                      infowindow.setContent( compiled[0] );
+                      infowindow.setContent(this.content);
                       infowindow.open($scope.map,this);
                     });
 
