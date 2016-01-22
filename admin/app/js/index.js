@@ -1,7 +1,7 @@
  angular.module('StarterApp')
  .value('CORSURL', '//cors-anywhere.herokuapp.com/')
  .value('APIURL', 'https://volontario-server.herokuapp.com/')
- .value('UPDATE_INTERVAL', '10000000')
+
 app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog','$http','CORSURL','APIURL', function($scope, $mdBottomSheet, $mdSidenav, $mdDialog, $http, CORSURL, APIURL){
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
@@ -14,24 +14,24 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
     },
     {
       link : '',
-      title: 'Friends',
+      title: 'Käyttäjät',
       icon: 'group'
     },
     {
       link : '',
-      title: 'Messages',
-      icon: 'message'
+      title: 'Hallinnointi',
+      icon: 'settings'
     }
   ];
   $scope.admin = [
     {
       link : '',
-      title: 'Trash',
+      title: 'Roskakori',
       icon: 'delete'
     },
     {
       link : 'showListBottomSheet($event)',
-      title: 'Settings',
+      title: 'Asetukset',
       icon: 'settings'
     }
   ];
@@ -46,11 +46,22 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
     // or server returns response with an error status.
   });
 
+ // user data
+ $http({
+  method: 'GET',
+  url: CORSURL+APIURL+'/users/56a24593b42e9f03002b54b7',
+  }).then(function successCallback(response) {
+    $scope.user = response.data;
+  }, function errorCallback(response) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+    
    // POST new event or events TODO: params
-   $scope.add = [];
+   $scope.addEvent = [];
   function newEvent(){
     var data = "category=bloodServiceCentre&latitude=65.0203311&longitude=27.699796&name=mahPlace&url=coming";
-    addUrl = "http://cors-anywhere.herokuapp.com/https://volontario-server.herokuapp.com/locations?category="+$scope.add.category+"&latitude="+$scope.add.latitude+"&longitude="+$scope.add.longitude+"&name="+$scope.add.name+"&url="+$scope.add.url;
+    addUrl = "http://cors-anywhere.herokuapp.com/https://volontario-server.herokuapp.com/locations?category="+$scope.addEvent.category+"&latitude="+$scope.addEvent.latitude+"&longitude="+$scope.addEvent.longitude+"&name="+$scope.addEvent.name+"&url="+$scope.addEvent.url;
     $http({
     method: 'POST',
     url: addUrl,
@@ -78,7 +89,7 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
   $scope.showAdd = function(ev) {
     $mdDialog.show({
       controller: DialogController,
-      template: '<md-dialog aria-label="Mango (Fruit)"> <md-content class="md-padding"> <form name="addFrom" ng-model-options="{ getterSetter: true }"> <div layout layout-sm="column"> <md-input-container flex> <label>Name</label> <input ng-model="add.name" name="name" placeholder="Placeholder text"> </md-input-container> <md-input-container flex> <label>Last Name</label> <input ng-model="theMax"> </md-input-container> </div> <md-input-container flex> <label>Address</label> <input ng-model="user.address"> </md-input-container> <div layout layout-sm="column"> <md-input-container flex> <label>City</label> <input ng-model="user.city"> </md-input-container> <md-input-container flex> <label>State</label> <input ng-model="user.state"> </md-input-container> <md-input-container flex> <label>Postal Code</label> <input ng-model="user.postalCode"> </md-input-container> </div> <md-input-container flex> <label>Biography</label> <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea> </md-input-container> </form> </md-content> <div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button> <md-button ng-click="answer(\'save\')" class="md-primary"> Save </md-button> </div></md-dialog>',
+      template: '<md-dialog aria-label="Mango (Fruit)"> <md-content class="md-padding"> <form name="addFrom" ng-model-options="{ getterSetter: true }"> <div layout layout-sm="column"> <md-input-container flex> <label>Name</label> <input ng-model="addEvent.name" name="name" placeholder="Placeholder text"> </md-input-container> <md-input-container flex> <label>Category</label> <input ng-model="addEvent.Category"> </md-input-container> </div> <md-input-container flex> <label>Address</label> <input ng-model="user.address"> </md-input-container> <div layout layout-sm="column"> <md-input-container flex> <label>City</label> <input ng-model="user.city"> </md-input-container> <md-input-container flex> <label>State</label> <input ng-model="user.state"> </md-input-container> <md-input-container flex> <label>Postal Code</label> <input ng-model="user.postalCode"> </md-input-container> </div> <md-input-container flex> <label>Biography</label> <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea> </md-input-container> </form> </md-content> <div class="md-actions" layout="row"> <span flex></span> <md-button ng-click="answer(\'not useful\')"> Cancel </md-button> <md-button ng-click="answer(\'save\')" class="md-primary"> Save </md-button> </div></md-dialog>',
       targetEvent: ev,
     })
     .then(function(answer) {
@@ -140,4 +151,6 @@ app.config(function($mdThemingProvider) {
     .accentPalette('pink');
   $mdThemingProvider.theme('input', 'default')
         .primaryPalette('grey')
+
+
 });
