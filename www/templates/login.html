@@ -1,0 +1,62 @@
+<!--<ion-view view-title="" hide-nav-bar="true" name="login-view">
+<ion-nav-buttons></ion-nav-buttons> 
+   <ion-content overflow-scroll="true" class="ion-content--grey">
+   <div class="card info-card">
+  <h4>Lähetämme numeroosi kirjautumiskoodin</h4>
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Puhelinnumero" ng-show="hide" ng-model="data.phonenumber">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="PIN" ng-show="show" ng-model="data.password">
+          </label>
+      </div>
+      <div class="button-bar">
+        <button class="button button-block button-calm" ng-show="hide" ng-click="pin()">Tilaa koodi</button>
+        <button class="button button-block button-calm" ng-show="show" ng-click="login()">Kirjaudu sisään</button>
+        <button class="button button-block button-calm" ng-click="register()">Rekisteröidy</button>
+      </div>
+    </div>  
+  </ion-content>
+</ion-view>--> 
+<ion-view id="login" hide-nav-bar="true">
+    <ion-content padding="true" scroll="false">
+        <form>
+            <div class="row responsive-md">
+                <div class="col col-50 col-offset-25">
+
+                    <div class="header padding text-center">
+                        <img src="img/gonow-logo.png" alt="Your logo here"/>
+                    </div>
+
+                    <div class="list">
+                        <label class="item item-input">
+                            <input type="text" placeholder="Puhelinnumero" required ng-model="data.phonenumber">
+                        </label>
+                        <label class="item item-input" ng-show="show">
+                            <input type="password" placeholder="PIN" ng-model="data.password">
+                        </label>
+                    </div>
+
+                    <div class="button-bar">
+                      <button class="button button-block button-calm" ng-show="hide" ng-click="pin()">Tilaa PIN</button>
+                      <button class="button button-block button-calm" ng-show="show" ng-click="login()">Kirjaudu sisään</button>
+                      <button class="button button-block button-calm" ng-click="register()">Rekisteröidy</button>
+                    </div>
+
+                   <div class="row row-no-padding">
+                        <div class="col">
+                          
+                        </div>
+
+                        <div class="col text-right"ng-show="show">
+                            <button class="button button-clear button-light" ng-click="pin()">
+                                Tilaa PIN uudelleen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

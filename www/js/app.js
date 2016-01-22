@@ -95,6 +95,16 @@ angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.ana
       }
     })
 
+    .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
     .state('app.settings', {
       url: '/settings',
       views: {

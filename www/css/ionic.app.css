@@ -10488,6 +10488,9 @@ svg.svgprogress {
 .scroll {
   height: 100%; }
 
+.hidden {
+  display: none; }
+
 .pull-right {
   float: right; }
 
