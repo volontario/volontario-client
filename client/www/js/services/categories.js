@@ -10,7 +10,7 @@ angular.module('lg')
       var categories =  [
         {
           id:0,
-          icon:'ion-android-bar',
+          icon:'ion-university',
           name:'bar',
           title:'Bar'
         },
@@ -22,7 +22,7 @@ angular.module('lg')
         },
         {
           id:2,
-          icon:'ion-ios-football',
+          icon:'ion-earth',
           name:'sports',
           title:'Sport'
         },
