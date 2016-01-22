@@ -118,12 +118,12 @@
                    layout="row" layout-align="center center">
                   <md-card flex-gt-sm="90" flex-gt-md="80">
                     <md-card-content>
-                      <h2>Activity</h2>
+                      <h2>Tapahtumat</h2>
                       <md-list>
                         <md-item ng-repeat="item in activity | filter:search">
                           <md-item-content>
                             <div class="md-tile-left inset" hide-sm>
-                                <user-avatar></user-avatar>
+                            <ng-md-icon icon="event" class="ng-scope"></ng-md-icon> 
                             </div>
                             <div class="md-tile-content">
                               <h3>{{item.title}}</h3>
@@ -155,7 +155,7 @@
                    layout="row" layout-align="center center">
                   <md-card flex-gt-sm="90" flex-gt-md="80">
                     <md-card-content>
-                      <h2>Favorites</h2>
+                      <h2>Suosikit</h2>
                       <md-list>
                         <md-item ng-repeat="item in activity | filter:search | orderBy:'-what'">
                           <md-item-content>
