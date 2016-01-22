@@ -2,7 +2,7 @@ angular.module('lg.controllers')
 // URL to API that enables cross-origin requests to anywhere
  .value('CORSURL', '//cors-anywhere.herokuapp.com/')
  .value('APIURL', 'https://volontario-server.herokuapp.com/')
- .value('UPDATE_INTERVAL', '10000000')
+
 .controller('LoginCtrl', function($scope, $localStorage, $ionicLoading, $compile, $http, $timeout, $ionicHistory, $interval,$state, APIURL, CORSURL,LoginService, $ionicPopup) {
 
   $scope.data = {};
@@ -36,7 +36,7 @@ angular.module('lg.controllers')
                 template: 'Please check your credentials!'
             });
         });
-    }
+    };
 
     $scope.login = function() {
         LoginService.loginUser($scope.data.phonenumber, $scope.data.password).success(function(data) {
@@ -50,7 +50,7 @@ angular.module('lg.controllers')
                 template: 'Please check your credentials!'
             });
         });
-    }
+    };
 });
 
 

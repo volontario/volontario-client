@@ -54,7 +54,16 @@ angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.ana
       controller: 'AppCtrl'
     })
 
-
+    .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+    
     .state('app.favorites', {
         url: '/favorites',
         views: {
@@ -91,16 +100,6 @@ angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.ana
         'menuContent': {
           templateUrl: 'templates/user.html',
           controller: 'UserCtrl'
-        }
-      }
-    })
-
-    .state('app.login', {
-      url: '/login',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/login.html',
-          controller: 'LoginCtrl'
         }
       }
     })
