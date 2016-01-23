@@ -92,7 +92,7 @@ angular.module('lg.controllers')
         /* basicAuth required
         */
 
-        $scope.addToCalendar= function(eventId){
+        $scope.addToCalendar = function(eventId){
           
           //save to localStorage and request from a service
           var userId = "56a24593b42e9f03002b54b7";
