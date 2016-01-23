@@ -69,12 +69,12 @@ angular.module('lg.controllers')
 
       var CalendarStart = '<div class="list" data-ec5-date>\
      <label class="item item-input item-stacked-label">\
-     <input type="datetime-local" name="calendarStart" ng-model="calendar.Start">\
+     <input type="datetime-local" name="calendarStart" required ng-model="calendar.Start">\
      </label>';
 
       var CalendarEnd = '<div class="list" data-ec5-date>\
      <label class="item item-input item-stacked-label">\
-     <input type="datetime-local" name="calendarEnd" ng-model="calendar.End">\
+     <input type="datetime-local" name="calendarEnd" required ng-model="calendar.End">\
      </label>';
 
       var searchLocations = function() {
@@ -93,7 +93,6 @@ angular.module('lg.controllers')
         */
 
         $scope.addToCalendar = function(eventId){
-          
           //save to localStorage and request from a service
           var userId = "56a24593b42e9f03002b54b7";
           var Auth = 'Basic dGVzdC50ZXN0QHRlc3QudGVzdDp0ZXN0';          
@@ -108,10 +107,21 @@ angular.module('lg.controllers')
             method: 'POST',
             headers: {'Authorization': Auth},
             data: {userId:userId, from: microFrom, to: microTo}
-          });
+            })
+          .done(function successCallBack(response){
+            // add response from API
+            var successText = "ilmoittautumisesi lähetettiin eteenpäin."
+                updateContent(successText); 
+          }, 
+          function errorCallBack(response){
+        });
 
         };
 
+        // infoWindow new visuals after succesfull or unsuccesfull $http. 
+        function updateContent(content) {
+            infowindow.setContent(content);
+        }
 
         var selectedTags = Categories.getActive();
         clearMarkers();
