@@ -9399,6 +9399,8 @@ a.button {
   z-index: 10;
   width: 52px;
   text-align: center; }
+  .button-set .top {
+    top: 5% !important; }
   .button-set .button.button-round {
     position: relative; }
     .button-set .button.button-round.button-round--small {
