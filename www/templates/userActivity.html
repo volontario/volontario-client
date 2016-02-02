@@ -8,15 +8,14 @@
       
       <div class="card info-card" ng-repeat="data in userEvents">
         <div class="item item--header">
-          <i class="icon ion-android-settings" ></i> Tapahtumat
+          <i class="icon ion-calendar" ></i> {{ data.name }} </br>
+          {{ data.category }}
         </div>
         <div class="item item--no-border item-text-wrap">
-          <label>id:
-          <input type="text" name="eventID"
-             ng-model="data"
-             ng-model-options="{ getterSetter: true }" />
-          </label>
-          <button ng-click="removeFromCalendar(data)"> Poista merkintä </button>
+          <h2>{{ data.calendar[0].from }} - {{ data.calendar[0].to }}</h2>
+          <a href="{{data.url}}">lue lisää</a>
+          <br>
+          <button class="btn" ng-click="removeFromCalendar(data.id,data.calendar[0].id)"> Poista merkintä </button>
 
         </div>
       </div>

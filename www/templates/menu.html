@@ -25,7 +25,7 @@
     <div class="custom-bar-header">
       <div class="flex">
         <button menu-close ng-click="editAvatar()" class="button button-icon button-user">
-            <span class="face" ng-if="user.gender!=='mens'" ng-include="'templates/user-avatar-female-svg.html'" ></span>
+            <span class="face" ng-if="user.gender!=='mens'" ng-include="'templates/user-avatar-male-svg.html'" ></span>
             <span class="face" ng-if="user.gender==='mens'" ng-include="'templates/user-avatar-male-svg.html'"></span>
             <span class="icon ion-gear-a"></span>
         </button>
@@ -46,6 +46,10 @@
         </ion-item>
            <ion-item class="item-icon-left item-light" ui-sref="app.userActivity" ui-sref-active="current" menu-close>
           <span class="icon ion-map"></span> My Activity
+        </ion-item>
+        </ion-item>
+           <ion-item class="item-icon-left item-light" ui-sref="app.avatar" ui-sref-active="current" menu-close>
+          <span class="icon ion-map"></span> Me
         </ion-item>
     </ion-list>
 

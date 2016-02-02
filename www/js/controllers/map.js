@@ -108,9 +108,9 @@ angular.module('lg.controllers')
             headers: {'Authorization': Auth},
             data: {userId:userId, from: microFrom, to: microTo}
             })
-          .done(function successCallBack(response){
+          .success(function successCallBack(response){
             // add response from API
-            var successText = "ilmoittautumisesi lähetettiin eteenpäin."
+            var successText = "ilmoittautumisesi lähetettiin eteenpäin.";
                 updateContent(successText); 
           }, 
           function errorCallBack(response){
