@@ -84,6 +84,16 @@ angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.ana
         }
     })
 
+    .state('app.list', {
+        url: '/list',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/list.html',
+            controller: 'ListCtrl'
+          }
+        }
+    })
+
    .state('app.userActivity', {
         url: '/userActivity',
         views: {
