@@ -11,23 +11,19 @@
 
     <div class="view-fade-in" >
       
-          <br>
-     <div class="button-set-top">
-          <div class="button-set__action-buttons" ng-if="showFilter"  ng-class="{open:buttonsVisible}" ng-click="buttonsVisible=!buttonsVisible">
-        <span class="button-set__action-buttons" ng-if="!buttonsVisible">
-            <a ng-repeat="category in categories track by category.id"
-            class="button button-light button-round button-round--small {{category.icon}}"
+   <div class="fixed-action-btn horizontal click-to-toggle" style="top: 10px; left: 10px;">
+    <a class="btn-floating btn-large waves-effect waves-light">
+      <i class="large mdi-navigation-menu"></i>
+    </a>
+    <ul>
+    <li ng-repeat="category in categories track by category.id">
+    <a class="btn-floating button button-light button-round button-round--small {{category.icon}}"
             ng-class="{'selected':selectedCategories.indexOf(category.name)>=0}"
             ng-click="toggleCategory(category.name)"
-            ></a>
-        </span>
-    </div>
-    <button
-      ng-click="showFilter=!showFilter" 
-      class="button button-light icon button-filters button-round"
-      ng-class="{'button--open':showFilter }"><i></i>
-      </button>
-      
+            ><i class="material-icons"></i></a></li>
+    </ul>
+  </div>
+<br><br>
       <div class="row" ng-repeat="data in data ">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
