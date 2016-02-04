@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.Volontario" 
-version="0.0.1" 
-xmlns="http://www.w3.org/ns/widgets" 
-xmlns:cdv="http://cordova.apache.org/ns/1.0"
-xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.ionicframework.Volontario" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>Volontario</name>
   <description>
     Volontario, so anyone can help.
@@ -20,7 +16,7 @@ xmlns:gap="http://phonegap.com/ns/1.0">
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
-  <preference name="StatusBarBackgroundColor" value="#4C3887" />
+  <preference name="StatusBarBackgroundColor" value="#4C3887"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>

@@ -13,7 +13,7 @@ if (!user.id) {
 //persist the user
 user.save();
 
-angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.analytics','lg.controllers','lg.services','transparentize','ionic.contrib.ui.tinderCards','ngStorage','ngTable','ngCordova'])
+angular.module('lg', ['ionic','ngCordovaOauth','ionic.service.core','chart.js','ionic.service.analytics','lg.controllers','lg.services','transparentize','ionic.contrib.ui.tinderCards','ngStorage','ngTable','ngCordova'])
 
 .run(function($ionicPlatform,$ionicAnalytics) {
   $ionicPlatform.ready(function() {
@@ -134,5 +134,5 @@ angular.module('lg', ['ionic','ionic.service.core','chart.js','ionic.service.ana
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/map');
+  $urlRouterProvider.otherwise('/app/login');
 });
