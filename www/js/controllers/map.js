@@ -1,10 +1,7 @@
 angular.module('lg.controllers')
-// URL to API that enables cross-origin requests to anywhere
- .value('CORSURL', '//cors-anywhere.herokuapp.com/')
- .value('APIURL', 'https://volontario-server.herokuapp.com/')
  .value('UPDATE_INTERVAL', '10000000')
 
-.controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval, $cordovaDatePicker, CORSURL, APIURL, Categories,MapSettings,UPDATE_INTERVAL) {
+.controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval, $cordovaDatePicker, CORS_PROXY, API_ROOT, Categories,MapSettings,UPDATE_INTERVAL) {
 
       var markers = [];
       var markerObj = [];
@@ -103,7 +100,7 @@ angular.module('lg.controllers')
           var microTo = new Date(to).getTime();
 
           $http({
-            url: CORSURL+APIURL+'events/'+eventId+'/calendar',
+            url: CORS_PROXY+API_ROOT+'events/'+eventId+'/calendar',
             method: 'POST',
             headers: {'Authorization': Auth},
             data: {userId:userId, from: microFrom, to: microTo}
@@ -125,8 +122,8 @@ angular.module('lg.controllers')
 
         var selectedTags = Categories.getActive();
         clearMarkers();
-        var locations = $http.get(CORSURL+APIURL+"/locations"),
-        events = $http.get(CORSURL+APIURL+"/events?"+selectedTags);
+        var locations = $http.get(CORS_PROXY+API_ROOT+"/locations"),
+        events = $http.get(CORS_PROXY+API_ROOT+"/events?"+selectedTags);
 
           $q.all([locations, events]).then(function successCallback(response) {
             // this callback will be called asynchronously

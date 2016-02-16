@@ -1,9 +1,6 @@
 angular.module('lg.controllers')
-// URL to API that enables cross-origin requests to anywhere
- .value('CORSURL', '//cors-anywhere.herokuapp.com/')
- .value('APIURL', 'https://volontario-server.herokuapp.com/')
 
-.controller('LoginCtrl', function($scope, $cordovaOauth, $q, $localStorage, $ionicLoading, $compile, $http, $timeout, $ionicHistory, $interval,$state, APIURL, CORSURL,LoginService, $ionicPopup) {
+.controller('LoginCtrl', function($scope, $cordovaOauth, $q, $localStorage, $ionicLoading, $compile, $http, $timeout, $ionicHistory, $interval,$state, API_ROOT,LoginService, $ionicPopup) {
   var def = $q.defer();
 
   $scope.data = {};
