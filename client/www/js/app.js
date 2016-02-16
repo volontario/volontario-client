@@ -31,6 +31,9 @@ angular.module('lg', [
   'ngCordova'
 ])
 
+.constant('API_ROOT', 'https://volontario-server.herokuapp.com/')
+.constant('CORS_PROXY', '//cors-anywhere.herokuapp.com/')
+
 .run(function($ionicPlatform, $ionicAnalytics) {
   $ionicPlatform.ready(function() {
     $ionicAnalytics.register();

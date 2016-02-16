@@ -1,13 +1,13 @@
 angular.module('lg.controllers')
 
-.controller('UserActivityCtrl', function($scope,$rootScope, $state, $http, CORSURL, APIURL, User) {
+.controller('UserActivityCtrl', function($scope,$rootScope, $state, $http, CORS_PROXY, API_ROOT, User) {
 
     var userId = $scope.user.id;//"56a24593b42e9f03002b54b7";
     var Auth = 'Basic dGVzdC50ZXN0QHRlc3QudGVzdDp0ZXN0';
 
 	var searchEvents = function(){
     $http({
-         url: CORSURL+APIURL+'users/'+userId+'/events',
+         url: CORS_PROXY+API_ROOT+'users/'+userId+'/events',
          method: 'GET',
          headers: {'Authorization': Auth},
          }).then(function successCallBack(response){
@@ -24,7 +24,7 @@ angular.module('lg.controllers')
 	$scope.removeFromCalendar = function(eventId,uniqueId){
 		//save to localStorage and request from a service
         var Auth = 'Basic dGVzdC50ZXN0QHRlc3QudGVzdDp0ZXN0';   
-        $http.delete(CORSURL+APIURL+'events/'+eventId+'/calendar/'+uniqueId,
+        $http.delete(CORS_PROXY+API_ROOT+'events/'+eventId+'/calendar/'+uniqueId,
             {headers: {'Authorization': Auth},
             })
           .success(function successCallBack(response){

@@ -1,16 +1,13 @@
 angular.module('lg.services',[])
 
-.value('CORSURL', '//cors-anywhere.herokuapp.com/')
-.value('APIURL', 'https://volontario-server.herokuapp.com/')
-
-.service('LoginService', function($q, $http, $localStorage,CORSURL,APIURL,$ionicPopup) {
+.service('LoginService', function($q, $http, $localStorage,API_ROOT,$ionicPopup) {
     return {
         loginUser: function(phoneNumber, pw) {
             var deferred = $q.defer();
             
             var promise = $http({
 			    method: 'POST',
-			    url: APIURL+'/device/login-two-factor',
+			    url: API_ROOT+'/device/login-two-factor',
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 			    transformRequest: function(obj) {
 			        var str = [];
@@ -27,7 +24,7 @@ angular.module('lg.services',[])
 					token: data.token,
 				}
 				
-			 $http.get(APIURL+'/customer/profile?token='+ data.token).then(function successCallBack(response){
+			 $http.get(API_ROOT+'/customer/profile?token='+ data.token).then(function successCallBack(response){
 				user = response.data;
 			// Init with defaults
 		      	$localStorage.user = {
@@ -71,10 +68,10 @@ angular.module('lg.services',[])
 })
 
 
-.factory('User', function($localStorage,$rootScope, $http, CORSURL, APIURL) {
+.factory('User', function($localStorage,$rootScope, $http, CORS_PROXY, API_ROOT) {
     return {
       get: function(){
-	 $http.get(CORSURL+APIURL+'/users/56a24593b42e9f03002b54b7').then(function successCallBack(response){
+	 $http.get(CORS_PROXY+API_ROOT+'/users/56a24593b42e9f03002b54b7').then(function successCallBack(response){
 		user = response.data;
 			// Init with defaults
 		      	$localStorage.user = {
