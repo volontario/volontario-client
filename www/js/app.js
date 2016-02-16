@@ -1,3 +1,6 @@
+/* eslint-env browser */
+/* globals Ionic, angular, cordova, StatusBar */
+
 // kick off the platform web client
 Ionic.io();
 
@@ -10,14 +13,26 @@ if (!user.id) {
   // user.id = 'your-custom-user-id';
 }
 
-//persist the user
+// persist the user
 user.save();
 
-angular.module('lg', ['ionic','ngCordovaOauth','ionic.service.core','chart.js','ionic.service.analytics','lg.controllers','lg.services','transparentize','ionic.contrib.ui.tinderCards','ngStorage','ngTable','ngCordova'])
+angular.module('lg', [
+  'ionic',
+  'ngCordovaOauth',
+  'ionic.service.core',
+  'chart.js',
+  'ionic.service.analytics',
+  'lg.controllers',
+  'lg.services',
+  'transparentize',
+  'ionic.contrib.ui.tinderCards',
+  'ngStorage',
+  'ngTable',
+  'ngCordova'
+])
 
-.run(function($ionicPlatform,$ionicAnalytics) {
+.run(function($ionicPlatform, $ionicAnalytics) {
   $ionicPlatform.ready(function() {
-
     $ionicAnalytics.register();
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -25,8 +40,8 @@ angular.module('lg', ['ionic','ngCordovaOauth','ionic.service.core','chart.js','
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
@@ -34,19 +49,21 @@ angular.module('lg', ['ionic','ngCordovaOauth','ionic.service.core','chart.js','
   });
 })
 
-
-.config(function($stateProvider, $urlRouterProvider,$httpProvider,$ionicConfigProvider,$compileProvider) {
-  
-
-
-  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|file|blob|mailto|whatsapp|spotify):|data:image\//);
-
+.config(function(
+  $stateProvider,
+  $urlRouterProvider,
+  $httpProvider,
+  $ionicConfigProvider,
+  $compileProvider
+) {
+  $compileProvider.aHrefSanitizationWhitelist(
+    /^\s*(https?|ftp|file|blob|mailto|whatsapp|spotify):|data:image\//
+  );
 
   $ionicConfigProvider.views.transition('none');
   $ionicConfigProvider.backButton.text('');
 
   $stateProvider
-
     .state('app', {
       url: '/app',
       abstract: true,
@@ -57,58 +74,57 @@ angular.module('lg', ['ionic','ngCordovaOauth','ionic.service.core','chart.js','
     .state('app.login', {
       url: '/login',
       views: {
-        'menuContent': {
+        menuContent: {
           templateUrl: 'templates/login.html',
           controller: 'LoginCtrl'
         }
       }
     })
-    
+
     .state('app.favorites', {
-        url: '/favorites',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/favorites.html',
-            controller: 'SelectedCtrl'
-          }
+      url: '/favorites',
+      views: {
+        menuContent: {
+          templateUrl: 'templates/favorites.html',
+          controller: 'SelectedCtrl'
         }
+      }
     })
 
     .state('app.map', {
-        url: '/map',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/map.html',
-            controller: 'MapCtrl'
-          }
+      url: '/map',
+      views: {
+        menuContent: {
+          templateUrl: 'templates/map.html',
+          controller: 'MapCtrl'
         }
+      }
     })
 
     .state('app.list', {
-        url: '/list',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/list.html',
-            controller: 'ListCtrl'
-          }
+      url: '/list',
+      views: {
+        menuContent: {
+          templateUrl: 'templates/list.html',
+          controller: 'ListCtrl'
         }
+      }
     })
 
-   .state('app.userActivity', {
-        url: '/userActivity',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/userActivity.html',
-            controller: 'UserActivityCtrl'
-          }
+    .state('app.userActivity', {
+      url: '/userActivity',
+      views: {
+        menuContent: {
+          templateUrl: 'templates/userActivity.html',
+          controller: 'UserActivityCtrl'
         }
+      }
     })
-
 
     .state('app.help', {
       url: '/help',
       views: {
-        'menuContent': {
+        menuContent: {
           templateUrl: 'templates/help.html'
         }
       }
@@ -117,7 +133,7 @@ angular.module('lg', ['ionic','ngCordovaOauth','ionic.service.core','chart.js','
     .state('app.avatar', {
       url: '/user',
       views: {
-        'menuContent': {
+        menuContent: {
           templateUrl: 'templates/user.html',
           controller: 'UserCtrl'
         }
@@ -127,7 +143,7 @@ angular.module('lg', ['ionic','ngCordovaOauth','ionic.service.core','chart.js','
     .state('app.settings', {
       url: '/settings',
       views: {
-        'menuContent': {
+        menuContent: {
           templateUrl: 'templates/settings.html'
         }
       }
