@@ -60,8 +60,16 @@ app.controller('AppCtrl', ['$scope', '$mdBottomSheet','$mdSidenav', '$mdDialog',
    // POST new event or events TODO: params
    $scope.addEvent = [];
   function newEvent(){
-    var data = "category=bloodServiceCentre&latitude=65.0203311&longitude=27.699796&name=mahPlace&url=coming";
-    addUrl = "http://cors-anywhere.herokuapp.com/https://volontario-server.herokuapp.com/locations?category="+$scope.addEvent.category+"&latitude="+$scope.addEvent.latitude+"&longitude="+$scope.addEvent.longitude+"&name="+$scope.addEvent.name+"&url="+$scope.addEvent.url;
+    var data = {
+      category: 'bloodServiceCentre',
+      coordinates: {
+        latitude: 65.0203311,
+        longitude: 27.699796
+      },
+      name: 'mahPlace',
+      url: 'coming'
+    };
+    addUrl = "http://cors-anywhere.herokuapp.com/https://volontario-server.herokuapp.com/locations?category="+$scope.addEvent.category+"&coordinates.latitude="+$scope.addEvent.latitude+"&coordinates.longitude="+$scope.addEvent.longitude+"&name="+$scope.addEvent.name+"&url="+$scope.addEvent.url;
     $http({
     method: 'POST',
     url: addUrl,
