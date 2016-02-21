@@ -4,7 +4,7 @@ angular.module('lg')
 /* 
 * Get JSON
 */
-.factory('Categories',function($http, $q, $localStorage) {
+.factory('Categories',function($q, $localStorage) {
 
 
       var categories =  [

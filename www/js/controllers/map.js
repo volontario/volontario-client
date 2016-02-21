@@ -1,7 +1,7 @@
 angular.module('lg.controllers')
  .value('UPDATE_INTERVAL', '10000000')
 
-.controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $http, $timeout, $interval, $cordovaDatePicker, CORS_PROXY, API_ROOT, Categories,MapSettings,UPDATE_INTERVAL) {
+.controller('MapCtrl', function($scope, $q, $ionicLoading, $compile, $timeout, $interval, $cordovaDatePicker, Categories,MapSettings,UPDATE_INTERVAL) {
 
       var markers = [];
       var markerObj = [];
@@ -99,12 +99,8 @@ angular.module('lg.controllers')
           var microFrom = new Date(from).getTime();
           var microTo = new Date(to).getTime();
 
-          $http({
-            url: CORS_PROXY+API_ROOT+'events/'+eventId+'/calendar',
-            method: 'POST',
-            headers: {'Authorization': Auth},
-            data: {userId:userId, from: microFrom, to: microTo}
-            })
+          var data = {userId:userId, from: microFrom, to: microTo};
+          dataFactory.postEventCalendarItem(eventId, data)
           .success(function successCallBack(response){
             // add response from API
             var successText = "ilmoittautumisesi lähetettiin eteenpäin.";
@@ -122,8 +118,8 @@ angular.module('lg.controllers')
 
         var selectedTags = Categories.getActive();
         clearMarkers();
-        var locations = $http.get(CORS_PROXY+API_ROOT+"/locations"),
-        events = $http.get(CORS_PROXY+API_ROOT+"/events?"+selectedTags);
+        var locations = dataFactory.getLocations();
+        var events = dataFactory.getEvents({tags: selectedTags});
 
           $q.all([locations, events]).then(function successCallback(response) {
             // this callback will be called asynchronously

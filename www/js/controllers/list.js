@@ -1,11 +1,11 @@
 angular.module('lg.controllers')
 
-.controller('ListCtrl', function($scope,$rootScope,$state,$http, User, CORS_PROXY, API_ROOT, Categories, $q) {
+.controller('ListCtrl', function($scope,$rootScope,$state, User, dataFactory, Categories, $q) {
 
 	var selectedTags = Categories.getActive();
 	
-	var locations = $http.get(CORS_PROXY+API_ROOT+"/locations"),
-	events = $http.get(CORS_PROXY+API_ROOT+"/events?"+selectedTags);
+	var locations = dataFactory.getLocations();
+  var events = dataFactory.getEvents({tags: selectedTags});
 
 	  $q.all([locations, events]).then(function successCallback(response) {
 	    // this callback will be called asynchronously

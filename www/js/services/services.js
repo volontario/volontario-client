@@ -68,10 +68,11 @@ angular.module('lg.services',[])
 })
 
 
-.factory('User', function($localStorage,$rootScope, $http, CORS_PROXY, API_ROOT) {
+.factory('User', function($localStorage,$rootScope, dataFactory, CORS_PROXY, API_ROOT) {
     return {
       get: function(){
-	 $http.get(CORS_PROXY+API_ROOT+'/users/56a24593b42e9f03002b54b7').then(function successCallBack(response){
+        dataFactory.getUserById('56a24593b42e9f03002b54b7')
+	        .then(function successCallBack(response){
 		user = response.data;
 			// Init with defaults
 		      	$localStorage.user = {
