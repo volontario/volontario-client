@@ -25,5 +25,24 @@
   ],
   "cordovaPlatforms": [
     "android"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": [
+      "angular",
+      "google"
+    ],
+    "env": {
+        "browser": true
+    },
+    "globals": {
+        "_": true,
+        "document": true,
+        "google": true,
+        "ionic": true
+    },
+    "rules": {
+        "require-jsdoc": 0,
+        "angular/controller-as": 0
+    }
+  }
 }
