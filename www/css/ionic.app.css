@@ -9399,111 +9399,119 @@ a.button {
   z-index: 10;
   width: 52px;
   text-align: center; }
-  .button-set .top {
-    top: 5% !important; }
   .button-set .button.button-round {
     position: relative; }
     .button-set .button.button-round.button-round--small {
       border: 1px solid #ddd; }
-  .button-set .button-set__action-buttons {
-    margin-bottom: 5px; }
-    .button-set .button-set__action-buttons .button {
-      box-shadow: none;
-      transition: transform 0.2s none;
-      margin-bottom: 10px;
-      opacity: 0;
-      transform: translate3d(0, -100%, 0) scale(0);
-      -webkit-animation: showButtons 0.6s cubic-bezier(0.87, -0.41, 0.19, 1.44);
-      animation: showButtons 0.6s cubic-bezier(0.87, -0.41, 0.19, 1.44);
-      animation-fill-mode: forwards;
-      color: #ff9999;
-      border: 1px solid #eee; }
-      .button-set .button-set__action-buttons .button:nth-child(1) {
-        -webkit-animation-delay: 320ms;
-        animation-delay: 320ms; }
-      .button-set .button-set__action-buttons .button:nth-child(2) {
-        -webkit-animation-delay: 240ms;
-        animation-delay: 240ms; }
-      .button-set .button-set__action-buttons .button:nth-child(3) {
-        -webkit-animation-delay: 160ms;
-        animation-delay: 160ms; }
-      .button-set .button-set__action-buttons .button:nth-child(4) {
-        -webkit-animation-delay: 80ms;
-        animation-delay: 80ms; }
-      .button-set .button-set__action-buttons .button:nth-child(5) {
-        -webkit-animation-delay: 0ms;
-        animation-delay: 0ms; }
-      .button-set .button-set__action-buttons .button.selected {
-        background: #ff9999;
-        color: #eee; }
-      .button-set .button-set__action-buttons .button span {
-        background: rgba(88, 83, 104, 0.6);
-        border-radius: 3px;
-        color: #fff;
-        font-size: 12px;
-        font-weight: bold;
-        line-height: 26px;
-        transform: translate3d(45px, 5px, 0);
-        padding: 0 7px;
-        left: 0px;
-        top: 0px;
-        position: absolute;
-        text-transform: capitalize; }
-      .button-set .button-set__action-buttons .button select {
-        opacity: 0;
-        z-index: 9;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        display: block; }
-        .button-set .button-set__action-buttons .button select option {
-          color: #ff9999;
-          padding: 20px; }
-
-.button.button-filters {
-  position: relative;
-  transition: box-shadow 0.2s ease; }
-  .button.button-filters i {
-    line-height: 1;
-    display: inline-block;
+  .button-set .button-set-top {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate3d(-6px, -1px, 0);
-    transform: translate3d(-6px, -1px, 0);
-    width: 12px;
-    height: 2px;
-    background: #ff9999;
-    transition: none; }
-    .button.button-filters i:before, .button.button-filters i:after {
-      position: absolute;
-      content: '';
+    left: 20px;
+    top: 5%;
+    z-index: 10;
+    width: 52px;
+    text-align: center; }
+    .button-set .button-set-top .button.button-round {
+      position: relative; }
+      .button-set .button-set-top .button.button-round.button-round--small {
+        border: 1px solid #ddd; }
+    .button-set .button-set-top .button-set__action-buttons {
+      margin-bottom: 5px; }
+      .button-set .button-set-top .button-set__action-buttons .button {
+        box-shadow: none;
+        transition: transform 0.2s none;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translate3d(0, -130%, 0) scale(0);
+        -webkit-animation: showButtons 0.6s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+        animation: showButtons 0.6s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+        animation-fill-mode: forwards;
+        color: #ff9999;
+        border: 1px solid #eee; }
+        .button-set .button-set-top .button-set__action-buttons .button:nth-child(1) {
+          -webkit-animation-delay: 320ms;
+          animation-delay: 320ms; }
+        .button-set .button-set-top .button-set__action-buttons .button:nth-child(2) {
+          -webkit-animation-delay: 240ms;
+          animation-delay: 240ms; }
+        .button-set .button-set-top .button-set__action-buttons .button:nth-child(3) {
+          -webkit-animation-delay: 160ms;
+          animation-delay: 160ms; }
+        .button-set .button-set-top .button-set__action-buttons .button:nth-child(4) {
+          -webkit-animation-delay: 80ms;
+          animation-delay: 80ms; }
+        .button-set .button-set-top .button-set__action-buttons .button:nth-child(5) {
+          -webkit-animation-delay: 0ms;
+          animation-delay: 0ms; }
+        .button-set .button-set-top .button-set__action-buttons .button.selected {
+          background: #ff9999;
+          color: #eee; }
+        .button-set .button-set-top .button-set__action-buttons .button span {
+          background: rgba(88, 83, 104, 0.6);
+          border-radius: 3px;
+          color: #fff;
+          font-size: 12px;
+          font-weight: bold;
+          line-height: 26px;
+          transform: translate3d(45px, 5px, 0);
+          padding: 0 7px;
+          left: 0px;
+          top: 0px;
+          position: absolute;
+          text-transform: capitalize; }
+        .button-set .button-set-top .button-set__action-buttons .button select {
+          opacity: 0;
+          z-index: 9;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          display: block; }
+          .button-set .button-set-top .button-set__action-buttons .button select option {
+            color: #ff9999;
+            padding: 20px; }
+  .button-set .button.button-filters {
+    position: relative;
+    transition: box-shadow 0.2s ease; }
+    .button-set .button.button-filters i {
+      line-height: 1;
       display: inline-block;
-      background: #ff9999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate3d(-6px, -1px, 0);
+      transform: translate3d(-6px, -1px, 0);
+      width: 12px;
       height: 2px;
-      left: -2px;
+      background: #ff9999;
+      transition: none; }
+      .button-set .button.button-filters i:before, .button-set .button.button-filters i:after {
+        position: absolute;
+        content: '';
+        display: inline-block;
+        background: #ff9999;
+        height: 2px;
+        left: -2px;
+        width: 16px;
+        top: -6px; }
+      .button-set .button.button-filters i:before {
+        width: 6px;
+        left: 3px;
+        top: 6px; }
+    .button-set .button.button-filters.button--open {
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
+    .button-set .button.button-filters.button--open i {
       width: 16px;
-      top: -6px; }
-    .button.button-filters i:before {
-      width: 6px;
-      left: 3px;
-      top: 6px; }
-  .button.button-filters.button--open {
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
-  .button.button-filters.button--open i {
-    width: 16px;
-    animation: midline 0.4s ease-out;
-    animation-fill-mode: forwards; }
-    .button.button-filters.button--open i:before {
-      animation: bottomline 0.4s ease-out;
+      animation: midline 0.4s ease-out;
       animation-fill-mode: forwards; }
-    .button.button-filters.button--open i:after {
-      animation: topline 0.4s ease-out;
-      -webkit-animation: topline 0.4s ease-out;
-      animation-fill-mode: forwards;
-      -webkit-animation-fill-mode: forwards; }
+      .button-set .button.button-filters.button--open i:before {
+        animation: bottomline 0.4s ease-out;
+        animation-fill-mode: forwards; }
+      .button-set .button.button-filters.button--open i:after {
+        animation: topline 0.4s ease-out;
+        -webkit-animation: topline 0.4s ease-out;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards; }
 
 /* 
 .headerimg {
@@ -10492,6 +10500,9 @@ svg.svgprogress {
 
 .hidden {
   display: none; }
+
+.center-on-me {
+  margin: 1em; }
 
 .pull-right {
   float: right; }
