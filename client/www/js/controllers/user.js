@@ -1,9 +1,6 @@
 (function() {
   function UserController($scope, dataFactory) {
     var userId = $scope.user.id;
-
-     console.log( dataFactory.getUserById(userId));
-
     $scope.skill = $scope.user.tags;
 
     $scope.addSkill = function(skill) {

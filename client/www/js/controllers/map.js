@@ -11,7 +11,8 @@
     Categories,
     MapSettings,
     UPDATE_INTERVAL,
-    dataFactory
+    dataFactory,
+    $cordovaGeolocation
   ) {
     var markers = [];
     var markerObj = [];
@@ -81,10 +82,6 @@
       }, function(error) {
         alert('Unable to get location: ' + error.message);
       });
-    };
-
-    $scope.clickTest = function() {
-      alert('Example of infowindow with ng-click');
     };
 
     var CalendarStart =
