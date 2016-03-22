@@ -36,6 +36,25 @@ angular.module('lg')
         });
       },
 
+      setUserTags: function(id,data) {
+        return $http({
+          method: 'POST',
+          url: root + '/users/' + id + '/tags',
+          headers: {Authorization: testAuth},
+          data: data
+        });
+      },
+
+      setUserPrefences: function(id,data) {
+        return $http({
+          method: 'POST',
+          url: root + '/users/' + id + '/preferences',
+          headers: {Authorization: testAuth},
+          data: data
+        });
+      },
+
+
       postEventCalendarItem: function(id, data) {
         return $http({
           method: 'POST',
