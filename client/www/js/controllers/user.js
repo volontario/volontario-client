@@ -1,21 +1,16 @@
 (function() {
-  function UserController($scope) {
-    $scope.skill = [
-      {skill: 'häsäys'},
-      {skill: 'EA1'}
-    ];
+  function UserController($scope, dataFactory) {
+    var userId = $scope.user.id;
+    $scope.skill = $scope.user.tags;
 
     $scope.addSkill = function(skill) {
-      $scope.skill.push({skill: skill});
+      dataFactory.setUserTags(userId, skill);
     };
 
-    $scope.preference = [
-      {preference: 'sosialisointi'},
-      {preference: 'magioinit'}
-    ];
+    $scope.preference = $scope.user.tags;
 
     $scope.addPreference = function(preference) {
-      $scope.preference.push({preference: preference});
+        dataFactory.setUserPreference(userId, preference);
     };
   }
 

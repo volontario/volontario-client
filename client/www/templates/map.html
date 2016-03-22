@@ -1,6 +1,11 @@
 <ion-view view-title="">
   <ion-content>
- 
+     <button 
+      ng-click="centerOnMe()" 
+      class="button button-light ion-ios-navigate-outline button-round center-on-me"
+      ><i></i>
+      </button>
+      
       <div id="map" data-tap-disabled="true"></div>
       <div class="button-set">
           <div class="button-set__action-buttons" ng-if="showFilter"  ng-class="{open:buttonsVisible}" ng-click="buttonsVisible=!buttonsVisible">
@@ -18,5 +23,6 @@
       ng-class="{'button--open':showFilter }"><i></i>
       </button>
   </div>
+
   </ion-content>
 </ion-view>
