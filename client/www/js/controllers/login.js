@@ -11,9 +11,12 @@
     $ionicHistory,
     $interval,
     $state,
+    $window,
     LoginService
   ) {
     var def = $q.defer();
+
+    $localStorage.user = null;
 
     $scope.data = {};
     $scope.show = false;
@@ -32,6 +35,11 @@
           console.log('Error -> ' + error);
         });
     };
+
+    $scope.loginViaFacebook = function() {
+      $window.location.href = 'http://127.0.0.1:8080/auths/facebook';
+    }
+
     $scope.getUserInfo = function(accessToken, def) {
       var http = $http({
         url: 'https://www.googleapis.com/oauth2/v3/userinfo',

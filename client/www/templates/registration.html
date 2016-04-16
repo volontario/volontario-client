@@ -1,0 +1,35 @@
+<ion-view id="registration" hide-nav-bar="true">
+	<ion-content padding="true">
+		<form>
+			<div class="row responsive-md">
+				<div class="col col-50 col-offset-25">
+					<div class="header padding text-center">
+						<img src="" alt="Your logo here"/>
+					</div>
+
+					<div class="list">
+						<label class="item item-input">
+							<input type="text" placeholder="Sähköposti" required ng-model="data.email">
+						</label>
+
+						<label class="item item-input">
+							<input type="password" placeholder="Salasana" ng-model="data.password">
+						</label>
+
+						<label class="item item-input">
+							<input type="text" placeholder="Etunimi" required ng-model="data.givenName">
+						</label>
+
+						<label class="item item-input">
+							<input type="text" placeholder="Sukunimi" required ng-model="data.familyName">
+						</label>
+					</div>
+
+					<div class="button-bar">
+					  <button class="button button-block button-calm" ng-click="submit()">Rekisteröidy</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>
