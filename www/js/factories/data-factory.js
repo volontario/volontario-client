@@ -62,6 +62,14 @@ angular.module('lg')
           headers: {Authorization: testAuth},
           data: data
         });
+      },
+
+      postUser: function(data) {
+        return $http({
+          method: 'POST',
+          url: root + '/users',
+          data: data
+        });
       }
     };
   });

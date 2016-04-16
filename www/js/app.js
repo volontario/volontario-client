@@ -150,6 +150,16 @@ angular.module('lg', [
           templateUrl: 'templates/settings.html'
         }
       }
+    })
+
+    .state('app.registration', {
+      url: '/registration',
+      views: {
+        menuContent: {
+          templateUrl: 'templates/registration.html',
+          controller: 'RegistrationCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback

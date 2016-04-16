@@ -21,6 +21,10 @@
           });
 
         return $localStorage.user;
+      },
+
+      reset: function() {
+        $localStorage.user = null;
       }
     };
   }
