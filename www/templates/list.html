@@ -1,4 +1,4 @@
-<ion-view view-title="List view">
+<ion-view view-title="">
 
   <ion-nav-buttons side="right">
     <button class="button button-icon ion-android-done favorites" ng-click="save()"></button>
@@ -7,20 +7,19 @@
 
   <ion-content overflow-scroll="true" class="ion-content--grey">
     
-    <div class="view-fade-in" >
-      
-   <div class="fixed-action-btn horizontal click-to-toggle" style="top: 10px; left: 10px;">
-    <a class="btn-floating btn-large waves-effect waves-light">
-      <i class="large mdi-navigation-menu"></i>
-    </a>
-    <ul>
-    <li ng-repeat="category in categories track by category.id">
-    <a class="btn-floating button button-light button-round button-round--small {{category.icon}}"
-            ng-class="{'selected':selectedCategories.indexOf(category.name)>=0}"
-            ng-click="toggleCategory(category.name)"
-            ><i class="material-icons"></i></a></li>
-    </ul>
-  </div>
+    <div class="view-fade-in" >   
+     <div class="fixed-action-btn horizontal click-to-toggle horizontal-btn-margin" style="top: 10px; left: 10px;">
+      <a class="btn-floating button-light btn-large waves-effect waves-light">
+        <i class="small mdi-navigation-menu"></i>
+      </a>
+      <ul>
+      <li ng-repeat="category in categories track by category.id">
+      <a class="btn-floating button button-light button-round button-round--small {{category.icon}}"
+              ng-class="{'selected':selectedCategories.indexOf(category.name)>=0}"
+              ng-click="toggleCategory(category.name)"
+              ><i class="material-icons"></i></a></li>
+      </ul>
+    </div>
 <br><br>
       <div class="row" ng-repeat="data in data ">
       <div class="col s12 m6">

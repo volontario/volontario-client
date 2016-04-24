@@ -9255,6 +9255,9 @@ a.button {
   background: #f9f9f9;
   color: #5B5668; }
 
+.horizontal-btn-margin ul li {
+  margin: 0px 15px 15px 15px !important; }
+
 .button.button-round {
   height: 48px;
   width: 48px;
@@ -9443,7 +9446,7 @@ a.button {
           -webkit-animation-delay: 0ms;
           animation-delay: 0ms; }
         .button-set .button-set-top .button-set__action-buttons .button.selected {
-          background: #ff9999;
+          background: #ff9999 !important;
           color: #eee; }
         .button-set .button-set-top .button-set__action-buttons .button span {
           background: rgba(88, 83, 104, 0.6);
