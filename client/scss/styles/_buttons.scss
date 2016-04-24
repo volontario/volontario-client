@@ -1,6 +1,5 @@
 $round-btn-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.4);
 .horizontal-btn-margin ul li {margin: 0px 15px 15px 15px!important;}
-
 .button.button-round {
     height: 48px; 
     width: 48px;
@@ -218,7 +217,7 @@ $round-btn-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.4);
         }
       }
       &.selected {
-        background: $calm;
+        background: $calm!important;
         color:#eee;
       }
 
