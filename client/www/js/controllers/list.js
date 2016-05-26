@@ -17,7 +17,7 @@
 	    $q.all([locations, events]).then(function successCallback(response) {
 	      // this callback will be called asynchronously
 	      // when the response is available
-	      var res = response[0].data.concat(response[1].data);
+	      var res = response[1].data.concat(response[0].data);
 	      $scope.data = res;
 	    });
 	};
