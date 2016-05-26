@@ -1,5 +1,11 @@
 node_modules/
+<<<<<<< HEAD
 npm-debug.log
 .env
 *.swp
 *.swo
+=======
+platforms/
+plugins/
+Thumbs.db
+>>>>>>> origin/master

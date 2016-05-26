@@ -1,0 +1,101 @@
+<ion-view view-title="Profile">
+
+  <ion-nav-buttons side="right">
+    <button class="button button-icon ion-android-done favorites" ng-click="save()"></button>
+  </ion-nav-buttons>
+  
+
+  <ion-content overflow-scroll="true" class="ion-content--grey">
+    
+
+    <div class="view-fade-in" >
+      
+      <div class="card info-card">
+        <div class="item item--header">
+          <i class="icon ion-android-settings" ></i> Minä
+        </div>
+        <div class="item item--no-border item-text-wrap">
+           <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                      <input type="text" name="userName"
+                       ng-model="user.givenName"
+                       ng-model-options="{ getterSetter: true }" />
+                  </div>
+                  <div class="input-field col s6">
+                      <input type="text" name="userName"
+                       ng-model="user.familyName"
+                       ng-model-options="{ getterSetter: true }" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                      <input type="text" name="userName"
+                       ng-model="user.phoneNumber"
+                       ng-model-options="{ getterSetter: true }" />
+                  </div>
+                  <div class="input-field col s6">
+                       <input type="text" name="userName"
+                       ng-model="user.dateOfBirth"
+                       ng-model-options="{ getterSetter: true }" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="card info-card">
+        <div class="item item--header">
+        </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input  id="skill" type="text" name="skill" ng-model="add.skill" class="validate">
+              <label class="active" for="skill">Lisää uusi taito</label>
+            </div>
+            <div class="col s6">
+              <button class="btn" ng-click="addSkill(add.skill)">Lisää taito </button>
+            </div>
+          </div>
+          <div class="item item--no-border item-text-wrap">
+            <div class="chip"  ng-repeat="item in skill">
+            {{ item.skill }}
+            <i class="material-icons"><i class="ion-ios-close-empty"></i></i> 
+          </div>
+        
+        </div>
+      </div>
+
+    <div class="card info-card">
+        <div class="item item--header">
+        </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input  id="skill" type="text" name="skill" ng-model="add.preference" class="validate">
+              <label class="active" for="preference">Lisää preferenssi</label>
+            </div>
+            <div class="col s6">
+              <button class="btn" ng-click="addPreference(add.preference)">Lisää preferenssi </button>
+            </div>
+          </div>
+          <div class="item item--no-border item-text-wrap">
+            <div class="chip"  ng-repeat="item in preference">
+            {{ item.preference }}
+            <i class="material-icons"><i class="ion-ios-close-empty"></i></i> 
+          </div>
+        
+        </div>
+      </div>
+
+
+
+  </ion-content>
+</ion-view>

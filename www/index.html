@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Sviit">
+    <meta name="application-name" content="Sviit">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="theme-color" content="#7159B7">
+
+    <title>Volontario</title>
+
+
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="round.png">
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="font/flaticon.css" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <link href="//raw.githubusercontent.com/jtblin/angular-chart.js/master/dist/angular-chart.css" rel="stylesheet">
+
+    <!-- jQuery required-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) 
+    <script src="cordova.js"></script> 
+    -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <!-- ngTable -->
+    <link rel="stylesheet" href="js/components/ng-table.min.css">
+    <script src="js/components/ng-table.min.js"></script>
+
+
+    <script src="js/components/lodash.min.js"></script>
+    <script src="js/components/collide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/sidemenu.js"></script>
+    <script src="js/controllers/map.js"></script>
+    <script src="js/controllers/list.js"></script>
+    <script src="js/controllers/login.js"></script>
+    <script src="js/controllers/user-activity.js"></script>
+    <script src="js/controllers/selected.js"></script>
+    <script src="js/controllers/user.js"></script>
+    <script src="js/controllers/registration.js"></script>
+
+    <script src="js/factories/categories.js"></script>
+    <script src="js/factories/data-factory.js"></script>
+    <script src="js/factories/map-settings.js"></script>
+    <script src="js/factories/user.js"></script>
+
+    <script src="js/services/services.js"></script>
+    <!-- google maps javascript -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
+    <script src="js/components/transparentize.js"></script>
+    <script src="js/components/ionic.clothcards.js"></script>
+    <script src="js/components/ngStorage.min.js"></script>
+    
+   <!-- <script src="https://raw.githubusercontent.com/IamAdamJowett/angular-click-outside/master/clickoutside.directive.js"></script> -->
+  </head>
+  <script> moment.locale('en-gb'); </script>
+  <body ng-app="lg">
+   <!-- <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68067427-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>-->
+  
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

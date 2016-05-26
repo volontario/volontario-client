@@ -1,0 +1,28 @@
+<ion-view view-title="">
+  <ion-content>
+     <button 
+      ng-click="centerOnMe()" 
+      class="button button-light ion-ios-navigate-outline button-round center-on-me"
+      ><i></i>
+      </button>
+      
+      <div id="map" data-tap-disabled="true"></div>
+      <div class="button-set">
+          <div class="button-set__action-buttons" ng-if="showFilter"  ng-class="{open:buttonsVisible}" ng-click="buttonsVisible=!buttonsVisible">
+        <span class="button-set__action-buttons" ng-if="!buttonsVisible">
+            <a ng-repeat="category in categories track by category.id"
+            class="button button-light button-round button-round--small {{category.icon}}"
+            ng-class="{'selected':selectedCategories.indexOf(category.name)>=0}"
+            ng-click="toggleCategory(category.name)"
+            ></a>
+        </span>
+    </div>
+    <button
+      ng-click="showFilter=!showFilter" 
+      class="button button-light icon button-filters button-round"
+      ng-class="{'button--open':showFilter }"><i></i>
+      </button>
+  </div>
+
+  </ion-content>
+</ion-view>
